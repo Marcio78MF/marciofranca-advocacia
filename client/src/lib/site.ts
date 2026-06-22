@@ -4,11 +4,9 @@ export const ASSETS = {
   logo: "/images/logo-mf.png",
   fotoVerde: "/images/IMG_5151-opt.jpg",
   fotoRetrato: "/images/IMG_5136-opt.jpg",
-  heroBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/hero-bg-ka6KpLDXevyJDUn5aQ5w7b.webp",
-  agroBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/agro-bg-T5dp3ibmHMZ26Vnuy47sZb.webp",
-  pattern: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/pattern-mf-K88xQbaetoBzGpuN4iv3Zh.webp",
-  escritorio: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/escritorio-detalhe-DYH8Fq7JvuhSuEQwrPJiwZ.webp",
-  ogImage: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/og-image-M5iZVmQAhaex4b73SMLKKB.webp",
+  heroBg: "/images/hero-bg.webp",
+  agroBg: "/images/agro-bg.webp",
+  ogImage: "/images/og-image.webp",
 };
 
 export const FIRM = {

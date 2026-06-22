@@ -28,41 +28,26 @@
 
 ## Imagens — AÇÃO MANUAL NECESSÁRIA
 
-### Problema
+### Status: MIGRADO
 
-O site usa 3 imagens locais que eram servidas pelo proxy do Manus (`/manus-storage/`):
+Todas as referências a CloudFront e Manus foram removidas do código fonte. As imagens agora são locais:
 
-| Arquivo original | Novo path | Descrição |
-|-----------------|-----------|-----------|
-| `logo-mf_a29e7663.png` | `/images/logo-mf.png` | Logo do escritório |
-| `IMG_5151-opt_0b52805e.jpg` | `/images/IMG_5151-opt.jpg` | Foto terno verde (corpo) |
-| `IMG_5136-opt_ce8e6fa7.jpg` | `/images/IMG_5136-opt.jpg` | Foto retrato (terno azul) |
+| Arquivo | Path | Status |
+|---------|------|--------|
+| Logo MF | `/images/logo-mf.png` (15 KB) | ✅ Real |
+| Foto terno verde | `/images/IMG_5151-opt.jpg` (33 KB) | ✅ Real |
+| Foto retrato | `/images/IMG_5136-opt.jpg` (44 KB) | ✅ Real |
+| Hero background | `/images/hero-bg.webp` (4 KB) | ⚠️ Placeholder (cor sólida navy) |
+| Agro background | `/images/agro-bg.webp` (4 KB) | ⚠️ Placeholder (cor sólida verde) |
+| OG image | `/images/og-image.webp` (1 KB) | ⚠️ Placeholder (cor sólida navy) |
 
-Os paths no código já foram atualizados de `/manus-storage/` para `/images/`.
+### Ação recomendada (APÓS o deploy)
 
-Além disso, 5 imagens são servidas via CloudFront do Manus:
+Os 3 placeholders funcionam (o site carrega normalmente), mas os backgrounds ficarão sem a foto real. Para substituir:
 
-| Asset | URL | Risco |
-|-------|-----|-------|
-| `heroBg` | `d2xsxph8kpxj0f.cloudfront.net/...hero-bg...webp` | **ALTO** — pode ser desativado |
-| `agroBg` | `d2xsxph8kpxj0f.cloudfront.net/...agro-bg...webp` | **ALTO** |
-| `pattern` | `d2xsxph8kpxj0f.cloudfront.net/...pattern-mf...webp` | **ALTO** |
-| `escritorio` | `d2xsxph8kpxj0f.cloudfront.net/...escritorio...webp` | **ALTO** |
-| `ogImage` | `d2xsxph8kpxj0f.cloudfront.net/...og-image...webp` | **ALTO** |
-
-### Ação necessária (ANTES do deploy)
-
-1. **Acesse o Manus** enquanto ainda está ativo
-2. **Baixe as 3 imagens locais** do ambiente Manus
-3. **Coloque-as em** `client/public/images/` com os nomes:
-   - `logo-mf.png`
-   - `IMG_5151-opt.jpg`
-   - `IMG_5136-opt.jpg`
-4. **Baixe as 5 imagens do CloudFront** (acessíveis via o ambiente Manus)
-5. **Coloque-as em** `client/public/images/` e atualize os paths em `client/src/lib/site.ts` (constante `ASSETS`)
-6. Faça commit e push
-
-**Se as imagens do CloudFront continuarem acessíveis**, o site funcionará mesmo sem movê-las imediatamente. Mas recomenda-se migrar todas para evitar dependência futura.
+1. Obtenha as imagens originais (hero-bg, agro-bg, og-image) — do Manus ou de arquivo próprio
+2. Coloque-as em `client/public/images/` mantendo os nomes exatos
+3. Faça commit e push — a Vercel deploya automaticamente
 
 ## Configuração Vercel
 
@@ -139,8 +124,9 @@ Após importar o projeto na Vercel e adicionar o domínio personalizado, configu
 
 ### Antes do deploy
 
-- [ ] Baixar as 3 imagens locais do Manus e colocar em `client/public/images/`
-- [ ] (Recomendado) Baixar as 5 imagens CloudFront e atualizar paths em `site.ts`
+- [x] ~~Baixar as 3 imagens locais do Manus~~ — **feito** (logo, fotos)
+- [x] ~~Remover todas as referências CloudFront/Manus do código~~ — **feito**
+- [ ] (Pós-deploy) Substituir 3 placeholders por imagens reais (hero-bg, agro-bg, og-image)
 - [ ] Configurar Umami analytics (se usar) — obter `VITE_ANALYTICS_ENDPOINT` e `VITE_ANALYTICS_WEBSITE_ID`
 - [ ] (Opcional) Adicionar Microsoft Clarity — colar script no `index.html`
 
@@ -197,8 +183,7 @@ Preview deploys: cada branch/PR gera uma URL de preview automática.
 
 | Risco | Severidade | Mitigação |
 |-------|-----------|-----------|
-| Imagens do CloudFront Manus ficarem inacessíveis | **ALTA** | Baixar e hospedar localmente ANTES de desativar Manus |
-| 3 imagens locais faltando | **ALTA** | Baixar do Manus e commitar em `client/public/images/` |
+| 3 backgrounds são placeholder (cor sólida) | **MÉDIA** | Substituir pelas fotos reais quando disponíveis |
 | Umami analytics sem configuração | **BAIXA** | Site funciona sem — adicionar variáveis quando disponíveis |
 | Peer dependency warnings no install | **BAIXA** | `--legacy-peer-deps` resolve; não afeta o build |
 
@@ -215,8 +200,9 @@ Se a Vercel apresentar problemas:
 
 | Pendência | Prioridade | Responsável |
 |-----------|-----------|-------------|
-| Colocar 3 imagens locais em `client/public/images/` | **CRÍTICA** | Você (download do Manus) |
-| Migrar 5 imagens CloudFront para local | **ALTA** | Você (download do Manus) |
+| Substituir placeholder hero-bg.webp pela foto real | **MÉDIA** | Você |
+| Substituir placeholder agro-bg.webp pela foto real | **MÉDIA** | Você |
+| Substituir placeholder og-image.webp pela foto real | **MÉDIA** | Você |
 | Configurar Umami ou Google Analytics na Vercel | **MÉDIA** | Você |
 | Adicionar Microsoft Clarity (se desejado) | **BAIXA** | Você |
 | Remover pacotes npm não utilizados do Manus | **BAIXA** | Opcional |
