@@ -40,7 +40,7 @@ export function Footer() {
         <div>
           <h4 className="font-serif text-base font-semibold text-white">Áreas de Atuação</h4>
           <ul className="mt-4 space-y-2.5 text-sm">
-            {AREAS.slice(0, 5).map((a) => (
+            {AREAS.map((a) => (
               <li key={a.slug}>
                 <Link href={`/${a.slug}`} className="text-white/65 transition-colors hover:text-white">
                   {a.titulo}

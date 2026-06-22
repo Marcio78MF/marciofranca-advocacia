@@ -5,7 +5,7 @@ import { Streamdown } from "streamdown";
 import { Layout } from "@/components/Layout";
 import { CtaBand } from "@/components/Bits";
 import NotFound from "./NotFound";
-import { getPost, POSTS, FIRM } from "@/lib/site";
+import { getPost, POSTS, FIRM, AREAS } from "@/lib/site";
 import { useSeo, breadcrumbSchema } from "@/lib/seo";
 
 function fmtDate(iso: string) {
@@ -41,6 +41,7 @@ export default function BlogPost({ slug }: { slug: string }) {
   });
 
   const outros = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const areaRelacionada = AREAS.find((a) => a.categoria === post.categoria);
 
   return (
     <Layout>
@@ -74,13 +75,24 @@ export default function BlogPost({ slug }: { slug: string }) {
               <Streamdown>{post.conteudo}</Streamdown>
             </div>
 
-            <Link
-              href="/blog"
-              className="mt-12 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Voltar ao blog
-            </Link>
+            <div className="mt-12 flex flex-wrap items-center gap-4">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
+              >
+                <ArrowLeft className="h-4 w-4" />
+                Voltar ao blog
+              </Link>
+              {areaRelacionada && (
+                <Link
+                  href={`/${areaRelacionada.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-4 py-2 text-sm font-semibold text-primary hover:bg-primary/10"
+                >
+                  Saiba mais sobre {areaRelacionada.titulo}
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </Link>
+              )}
+            </div>
           </div>
         </div>
 

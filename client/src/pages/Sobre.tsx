@@ -5,6 +5,7 @@ import { Eyebrow, CtaBand } from "@/components/Bits";
 import { Authority } from "@/components/Authority";
 import { ASSETS, FIRM } from "@/lib/site";
 import { useSeo, legalServiceSchema, breadcrumbSchema } from "@/lib/seo";
+import { SeoLocal } from "@/components/SeoLocal";
 
 const VALORES = [
   { icon: Target, titulo: "Estratégia antes de tudo", texto: "Cada caso começa com um diagnóstico técnico e uma estratégia clara — administrativa, judicial ou negocial." },
@@ -199,6 +200,8 @@ export default function Sobre() {
           </a>
         </div>
       </section>
+
+      <SeoLocal />
 
       <CtaBand titulo="Pronto para conversar sobre o seu caso?" />
     </Layout>
