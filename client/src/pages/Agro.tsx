@@ -1,17 +1,30 @@
 /* HUB AGRO — vertical especializada para o produtor rural da Amazônia Legal. */
 import { Link } from "wouter";
-import { ArrowRight, Check, Leaf, ScrollText, Tractor } from "lucide-react";
+import { ArrowRight, Check, Leaf, ScrollText, Tractor, MapPinned, TreePine, Shield, FileCheck, Building2, Gavel, Sprout } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Eyebrow, CtaButtons, CtaBand } from "@/components/Bits";
 import { AreaIcon } from "@/components/AreaCard";
 import { Faq } from "@/components/Faq";
 import { AREAS_AGRO, ASSETS, FIRM } from "@/lib/site";
 import { useSeo, legalServiceSchema, faqSchema, breadcrumbSchema } from "@/lib/seo";
+import { SeoLocal } from "@/components/SeoLocal";
 
 const PILARES = [
   { icon: ScrollText, titulo: "Regularização Fundiária", texto: "Titulação, usucapião rural e regularização junto a INCRA, ITERACRE e SPU.", href: "/regularizacao-fundiaria" },
   { icon: Leaf, titulo: "Ambiental Rural", texto: "CAR, Reserva Legal, APP e defesa em autos de infração e embargos do IBAMA/SEMA.", href: "/ambiental-rural" },
   { icon: Tractor, titulo: "Aposentadoria Rural", texto: "Benefício do trabalhador rural e do segurado especial, com prova material organizada.", href: "/aposentadoria-rural" },
+];
+
+const AGRO_TEMAS = [
+  { icon: MapPinned, titulo: "Regularização Fundiária", texto: "Titulação, usucapião rural e regularização junto a INCRA, ITERACRE e SPU para garantir a propriedade da terra." },
+  { icon: FileCheck, titulo: "CAR — Cadastro Ambiental Rural", texto: "Inscrição, retificação e validação do CAR, pré-requisito para acesso a crédito e regularização ambiental." },
+  { icon: TreePine, titulo: "Reserva Legal e APP", texto: "Adequação ao Código Florestal: recomposição, regeneração natural ou compensação de Reserva Legal e APP." },
+  { icon: Sprout, titulo: "PRA — Programa de Regularização Ambiental", texto: "Adesão ao PRA para suspensão de sanções e regularização de passivos ambientais da propriedade." },
+  { icon: MapPinned, titulo: "Georreferenciamento", texto: "Certificação INCRA dos limites do imóvel, requisito para atos registrais e segurança jurídica da propriedade." },
+  { icon: Building2, titulo: "SEMA — Defesa Administrativa", texto: "Defesa em autos de infração e embargos da Secretaria de Meio Ambiente do Acre." },
+  { icon: Shield, titulo: "IBAMA — Defesa em Embargos", texto: "Defesa técnica contra autos de infração, multas e embargos federais, com análise de vícios e proporcionalidade." },
+  { icon: Gavel, titulo: "Licenciamento Ambiental", texto: "Assessoria em processos de licenciamento para atividades rurais, incluindo LP, LI e LO." },
+  { icon: Tractor, titulo: "Produtor Rural — Direitos e Obrigações", texto: "Orientação jurídica completa para o produtor: contratos agrários, crédito rural, PRONAF e seguro agrícola." },
 ];
 
 const AGRO_FAQ = [
@@ -125,8 +138,39 @@ export default function Agro() {
         </div>
       </section>
 
-      {/* Áreas Agro detalhadas (cards) */}
+      {/* Temas do Hub Agro */}
       <section className="bg-background py-20">
+        <div className="container">
+          <div className="reveal max-w-2xl">
+            <Eyebrow>Temas especializados</Eyebrow>
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance sm:text-4xl">
+              Conteúdo jurídico para o produtor rural
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Cada tema do agronegócio exige conhecimento específico. Confira as áreas que dominamos
+              para proteger seu patrimônio rural no Acre.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {AGRO_TEMAS.map((tema, i) => (
+              <div
+                key={tema.titulo}
+                className="reveal rounded-2xl border border-border bg-card p-5"
+                style={{ transitionDelay: `${i * 50}ms` }}
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-agro/10 text-agro">
+                  <tema.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-4 font-serif text-base font-semibold text-foreground">{tema.titulo}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tema.texto}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Áreas Agro detalhadas (cards) */}
+      <section className="bg-secondary/30 py-16">
         <div className="container">
           <h2 className="reveal font-serif text-2xl font-semibold text-foreground">
             Áreas conectadas ao Hub Agro
@@ -165,6 +209,8 @@ export default function Agro() {
           </div>
         </div>
       </section>
+
+      <SeoLocal />
 
       <CtaBand titulo="Sua propriedade precisa de segurança jurídica?" texto="Converse com quem entende de direito do agro na Amazônia Legal." />
     </Layout>

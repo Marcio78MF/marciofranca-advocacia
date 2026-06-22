@@ -11,6 +11,7 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { GoogleReviews } from "@/components/GoogleReviews";
 import { AREAS, AREAS_DESTAQUE, ASSETS, FIRM } from "@/lib/site";
 import { useSeo, legalServiceSchema } from "@/lib/seo";
+import { SeoLocal } from "@/components/SeoLocal";
 
 export default function Home() {
   useSeo({
@@ -40,10 +41,13 @@ export default function Home() {
               <Sparkles className="h-3.5 w-3.5" />
               {FIRM.posicionamento}
             </span>
-            <h1 className="mt-6 font-serif text-4xl font-semibold leading-[1.08] text-balance sm:text-5xl lg:text-[3.4rem]">
-              Defesa dos seus direitos perante o INSS, bancos, concessionárias de energia, conflitos familiares e processos criminais.
+            <h1 className="mt-6 font-serif text-3xl font-semibold leading-[1.12] text-balance sm:text-4xl lg:text-[2.8rem]">
+              Você não precisa enfrentar sozinho um benefício negado, descontos bancários indevidos, problemas rurais ou conflitos que exigem proteção jurídica.
             </h1>
-            <CtaButtons light className="mt-9" />
+            <p className="mt-4 text-base leading-relaxed text-white/75 text-pretty max-w-xl">
+              Atuação estratégica e personalizada nas áreas previdenciária, bancária, rural, familiar e criminal.
+            </p>
+            <CtaButtons light className="mt-7" />
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/60">
               <span className="flex items-center gap-2">
@@ -205,15 +209,17 @@ export default function Home() {
 
       <GoogleReviews />
 
+      <SeoLocal />
+
       {/* CTA final */}
       <section className="relative overflow-hidden bg-navy py-24 text-white">
         <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
         <div className="container relative reveal text-center">
           <h2 className="mx-auto max-w-2xl font-serif text-3xl font-semibold text-balance sm:text-4xl">
-            Você tem direito. Nós temos a estratégia.
+            Seu direito não pode esperar. Fale com quem entende.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-white/70 text-pretty">
-            Conte seu caso. A análise inicial é objetiva, confidencial e sem compromisso.
+            Conte sua situação. A análise inicial é objetiva, confidencial e sem compromisso.
           </p>
           <CtaButtons light className="mt-8 justify-center" />
         </div>

@@ -1,14 +1,15 @@
-/* Template de landing page por área de atuação. */
 import { Link } from "wouter";
-import { Check, ChevronRight, Users } from "lucide-react";
+import { Check, ChevronRight, Users, FileText, AlertCircle, Clock, MessageCircle, ClipboardList } from "lucide-react";
 import { Layout } from "@/components/Layout";
-import { Eyebrow, CtaButtons, CtaBand } from "@/components/Bits";
+import { Eyebrow } from "@/components/Bits";
 import { Faq } from "@/components/Faq";
 import { AreaIcon } from "@/components/AreaCard";
 import { HowItWorks } from "@/components/HowItWorks";
+import { SeoLocal } from "@/components/SeoLocal";
 import NotFound from "./NotFound";
-import { getArea, AREAS, FIRM } from "@/lib/site";
+import { getArea, AREAS, FIRM, whatsapp } from "@/lib/site";
 import { useSeo, faqSchema, breadcrumbSchema, legalServiceSchema } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 
 export default function AreaPage({ slug }: { slug: string }) {
   const area = getArea(slug);
@@ -33,6 +34,8 @@ export default function AreaPage({ slug }: { slug: string }) {
   const related = AREAS.filter((a) => a.slug !== area.slug && a.categoria === area.categoria).slice(0, 2);
   const fallback = AREAS.filter((a) => a.slug !== area.slug).slice(0, 3);
   const relatedFinal = (related.length ? related : fallback).slice(0, 3);
+
+  const ctaMsg = area.ctaWhatsapp ?? "Olá, vim pelo site e gostaria de uma análise do meu caso.";
 
   return (
     <Layout>
@@ -66,7 +69,24 @@ export default function AreaPage({ slug }: { slug: string }) {
               <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/75 text-pretty">
                 {area.resumo}
               </p>
-              <CtaButtons light className="mt-8" />
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={whatsapp(ctaMsg)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-press btn-wpp inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold shadow-sm"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  {area.ctaTexto ?? "Falar no WhatsApp"}
+                </a>
+                <Link
+                  href="/diagnostico"
+                  className="btn-press inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10"
+                >
+                  <ClipboardList className="h-4 w-4" />
+                  Fazer Diagnóstico Jurídico
+                </Link>
+              </div>
             </div>
 
             {/* Para quem */}
@@ -88,8 +108,118 @@ export default function AreaPage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* Como ajudamos */}
-      <section className="bg-background py-20">
+      {/* Problema enfrentado */}
+      {area.problema && (
+        <section className="bg-background py-20">
+          <div className="container">
+            <div className="reveal mx-auto max-w-3xl">
+              <Eyebrow>O problema</Eyebrow>
+              <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance">
+                O que está em jogo
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+                {area.problema}
+              </p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Quando procurar + Documentos */}
+      {(area.quandoProcurar || area.documentos) && (
+        <section className="bg-secondary/40 py-20">
+          <div className="container grid gap-12 lg:grid-cols-2">
+            {area.quandoProcurar && (
+              <div className="reveal">
+                <div className="flex items-center gap-2 text-primary">
+                  <Clock className="h-5 w-5" />
+                  <Eyebrow>Quando procurar um advogado</Eyebrow>
+                </div>
+                <ul className="mt-6 space-y-3">
+                  {area.quandoProcurar.map((item, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 rounded-xl border border-border bg-card p-4"
+                      style={{ transitionDelay: `${i * 40}ms` }}
+                    >
+                      <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
+                      <span className="text-sm text-foreground/85">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {area.documentos && (
+              <div className="reveal">
+                <div className="flex items-center gap-2 text-primary">
+                  <FileText className="h-5 w-5" />
+                  <Eyebrow>Documentos necessários</Eyebrow>
+                </div>
+                <ul className="mt-6 space-y-3">
+                  {area.documentos.map((doc, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 rounded-xl border border-border bg-card p-4"
+                      style={{ transitionDelay: `${i * 40}ms` }}
+                    >
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary/70" />
+                      <span className="text-sm text-foreground/85">{doc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Situações mais comuns */}
+      {area.situacoes && area.situacoes.length > 0 && (
+        <section className="bg-background py-20">
+          <div className="container">
+            <div className="reveal max-w-2xl">
+              <Eyebrow>Situações mais comuns</Eyebrow>
+              <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance">
+                Casos frequentes em {area.titulo}
+              </h2>
+            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {area.situacoes.map((sit, i) => (
+                <div
+                  key={i}
+                  className="reveal rounded-2xl border border-border bg-card p-6"
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  <h3 className="font-serif text-lg font-semibold text-foreground">{sit.titulo}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{sit.texto}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA intermediário */}
+            <div className="reveal mt-12 rounded-2xl border border-primary/20 bg-primary/5 p-6 text-center sm:p-8">
+              <p className="font-serif text-xl font-semibold text-foreground">
+                {area.ctaTexto ?? `Precisa de ajuda com ${area.titulo}?`}
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Envie sua documentação para análise. A avaliação inicial é confidencial.
+              </p>
+              <a
+                href={whatsapp(ctaMsg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press btn-wpp mt-5 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold shadow-sm"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Enviar documentação pelo WhatsApp
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Como ajudamos + Fundamentos */}
+      <section className={cn("py-20", area.situacoes ? "bg-secondary/40" : "bg-background")}>
         <div className="container grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="reveal">
             <Eyebrow>Como ajudamos</Eyebrow>
@@ -116,7 +246,6 @@ export default function AreaPage({ slug }: { slug: string }) {
             </div>
           </div>
 
-          {/* Fundamentos jurídicos */}
           <div className="reveal">
             <Eyebrow>Fundamentos jurídicos</Eyebrow>
             <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance">
@@ -157,9 +286,11 @@ export default function AreaPage({ slug }: { slug: string }) {
         </div>
       </section>
 
+      <SeoLocal />
+
       {/* Relacionadas */}
       {relatedFinal.length > 0 && (
-        <section className="bg-secondary/40 py-16">
+        <section className="bg-background py-16">
           <div className="container">
             <h2 className="reveal font-serif text-2xl font-semibold text-foreground">
               Outras áreas relacionadas
@@ -185,7 +316,42 @@ export default function AreaPage({ slug }: { slug: string }) {
         </section>
       )}
 
-      <CtaBand titulo={`Precisa de ajuda com ${area.titulo}?`} />
+      {/* CTA final personalizado */}
+      <section className="relative overflow-hidden bg-navy py-20 text-white">
+        <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
+        <div
+          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-30 blur-3xl"
+          style={{ background: "radial-gradient(circle, rgba(156,168,181,0.5), transparent 70%)" }}
+        />
+        <div className="container relative reveal">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-serif text-3xl font-semibold text-balance sm:text-4xl">
+              {area.ctaTexto ?? `Precisa de ajuda com ${area.titulo}?`}
+            </h2>
+            <p className="mt-4 text-base text-white/70 text-pretty">
+              Conte sua situação. A análise inicial é objetiva, confidencial e sem compromisso.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href={whatsapp(ctaMsg)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-press btn-wpp inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold shadow-sm"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Falar no WhatsApp
+              </a>
+              <Link
+                href="/diagnostico"
+                className="btn-press inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10"
+              >
+                <ClipboardList className="h-4 w-4" />
+                Diagnóstico Jurídico
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </Layout>
   );
 }

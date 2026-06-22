@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /__manus__/
 
 Sitemap: https://marciofranca.adv.br/sitemap.xml

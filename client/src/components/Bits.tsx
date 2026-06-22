@@ -14,17 +14,17 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   );
 }
 
-export function CtaButtons({ className, light }: { className?: string; light?: boolean }) {
+export function CtaButtons({ className, light, wppLabel, wppMsg }: { className?: string; light?: boolean; wppLabel?: string; wppMsg?: string }) {
   return (
     <div className={cn("flex flex-col gap-3 sm:flex-row", className)}>
       <a
-        href={whatsapp()}
+        href={whatsapp(wppMsg)}
         target="_blank"
         rel="noopener noreferrer"
         className="btn-press btn-wpp inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold shadow-sm"
       >
         <MessageCircle className="h-4 w-4" />
-        Falar no WhatsApp
+        {wppLabel ?? "Falar no WhatsApp"}
       </a>
       <Link
         href="/diagnostico"

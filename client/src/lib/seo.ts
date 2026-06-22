@@ -7,7 +7,7 @@ type SeoInput = {
   title: string;
   description: string;
   path?: string;
-  jsonLd?: object | object[];
+  jsonLd?: object | object[] | (object | object[])[];
 };
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
@@ -71,47 +71,76 @@ export function useSeo({ title, description, path = "/", jsonLd }: SeoInput) {
 
 export const SITE = SITE_URL;
 
-/** Schema base do escritório (Attorney + LegalService). */
-export const legalServiceSchema = {
-  "@context": "https://schema.org",
-  "@type": ["Attorney", "LegalService"],
-  name: FIRM.nome,
-  description:
-    "Advocacia estratégica, técnica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. Direito previdenciário, bancário, do consumidor, de família, criminal e agro.",
-  url: SITE_URL,
-  image: ASSETS.ogImage,
-  telephone: "+55-68-99951-1555",
-  founder: { "@type": "Person", name: "Márcio França", jobTitle: "Advogado" },
-  areaServed: [
-    { "@type": "City", name: "Rio Branco" },
-    { "@type": "State", name: "Acre" },
-    { "@type": "Country", name: "Brasil" },
-  ],
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Av. Epaminondas Jácome, nº 2172, Cerâmica",
-    addressLocality: "Rio Branco",
-    addressRegion: "AC",
-    postalCode: "69905-076",
-    addressCountry: "BR",
+const CIDADES_ACRE = [
+  "Rio Branco", "Cruzeiro do Sul", "Sena Madureira", "Tarauacá", "Feijó",
+  "Brasiléia", "Epitaciolândia", "Xapuri", "Bujari", "Porto Acre",
+  "Acrelândia", "Plácido de Castro", "Assis Brasil", "Mâncio Lima",
+  "Rodrigues Alves", "Capixaba",
+];
+
+/** Schema base do escritório (Attorney + LegalService + LocalBusiness). */
+export const legalServiceSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Attorney",
+    "@id": `${SITE_URL}/#attorney`,
+    name: FIRM.advogado,
+    jobTitle: "Advogado",
+    description: "Advogado responsável pelo escritório Márcio França Advocacia, inscrito na OAB/AC sob o nº 2882.",
+    url: SITE_URL,
+    image: ASSETS.ogImage,
+    telephone: "+55-68-99951-1555",
+    worksFor: { "@type": "LegalService", "@id": `${SITE_URL}/#legalservice` },
+    knowsAbout: [
+      "Direito Previdenciário", "BPC/LOAS", "Aposentadoria Rural",
+      "Direito Bancário", "Empréstimo Consignado", "Direito do Consumidor",
+      "Direito de Família", "Direito Criminal", "Regularização Fundiária",
+      "Direito Ambiental Rural", "Direito do Agronegócio",
+    ],
+    sameAs: [FIRM.instagramUrl],
   },
-  geo: { "@type": "GeoCoordinates", latitude: -9.9747, longitude: -67.8076 },
-  hasMap: FIRM.mapsLink,
-  priceRange: "$$",
-  knowsAbout: [
-    "Direito Previdenciário",
-    "BPC/LOAS",
-    "Aposentadoria Rural",
-    "Direito Bancário",
-    "Empréstimo Consignado",
-    "Direito do Consumidor",
-    "Direito de Família",
-    "Direito Criminal",
-    "Regularização Fundiária",
-    "Direito Ambiental Rural",
-  ],
-  sameAs: [FIRM.instagramUrl],
-};
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "@id": `${SITE_URL}/#legalservice`,
+    name: FIRM.nome,
+    description:
+      "Advocacia estratégica, técnica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. Direito previdenciário, bancário, do consumidor, de família, criminal e agro.",
+    url: SITE_URL,
+    image: ASSETS.ogImage,
+    telephone: "+55-68-99951-1555",
+    founder: { "@type": "Person", name: "Márcio França", jobTitle: "Advogado" },
+    areaServed: [
+      ...CIDADES_ACRE.map((c) => ({ "@type": "City" as const, name: c })),
+      { "@type": "State" as const, name: "Acre" },
+      { "@type": "Country" as const, name: "Brasil" },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Av. Epaminondas Jácome, nº 2172, Cerâmica",
+      addressLocality: "Rio Branco",
+      addressRegion: "AC",
+      postalCode: "69905-076",
+      addressCountry: "BR",
+    },
+    geo: { "@type": "GeoCoordinates", latitude: -9.9747, longitude: -67.8076 },
+    hasMap: FIRM.mapsLink,
+    priceRange: "$$",
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "18:00",
+    },
+    knowsAbout: [
+      "Direito Previdenciário", "BPC/LOAS", "Aposentadoria Rural",
+      "Direito Bancário", "Empréstimo Consignado", "Direito do Consumidor",
+      "Direito de Família", "Direito Criminal", "Regularização Fundiária",
+      "Direito Ambiental Rural", "Direito do Agronegócio",
+    ],
+    sameAs: [FIRM.instagramUrl],
+  },
+];
 
 export function faqSchema(faq: { q: string; a: string }[]) {
   return {

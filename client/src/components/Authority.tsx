@@ -5,8 +5,8 @@ import { FIRM } from "@/lib/site";
 const ITEMS = [
   { icon: Award, valor: `+${FIRM.anos} anos`, label: "de atuação jurídica" },
   { icon: ShieldCheck, valor: FIRM.oab, label: "inscrição ativa na OAB" },
-  { icon: MapPin, valor: "Brasil", label: "atuação digital nacional" },
-  { icon: Star, valor: "Google", label: "Perfil verificado da Empresa" },
+  { icon: MapPin, valor: "Todo o Acre", label: "presencial e digital" },
+  { icon: Star, valor: "Google", label: "avaliações reais verificadas" },
 ];
 
 export function Authority() {
