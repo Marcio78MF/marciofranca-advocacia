@@ -1,9 +1,9 @@
 /* Dados centrais do site Márcio França Advocacia */
 
 export const ASSETS = {
-  logo: "/manus-storage/logo-mf_a29e7663.png",
-  fotoVerde: "/manus-storage/IMG_5151-opt_0b52805e.jpg", // terno verde, corpo
-  fotoRetrato: "/manus-storage/IMG_5136-opt_ce8e6fa7.jpg", // retrato terno azul
+  logo: "/images/logo-mf.png",
+  fotoVerde: "/images/IMG_5151-opt.jpg",
+  fotoRetrato: "/images/IMG_5136-opt.jpg",
   heroBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/hero-bg-ka6KpLDXevyJDUn5aQ5w7b.webp",
   agroBg: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/agro-bg-T5dp3ibmHMZ26Vnuy47sZb.webp",
   pattern: "https://d2xsxph8kpxj0f.cloudfront.net/310419663028326121/eBp8cXACY4aYoeuz5UG4H2/pattern-mf-K88xQbaetoBzGpuN4iv3Zh.webp",
