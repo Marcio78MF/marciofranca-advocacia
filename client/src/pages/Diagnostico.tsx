@@ -27,6 +27,16 @@ import { cn } from "@/lib/utils";
 
 const SITE_URL = "https://marciofranca.adv.br";
 
+function trackEvent(name: string, data?: Record<string, string>) {
+  try {
+    if (typeof window !== "undefined" && (window as any).umami) {
+      (window as any).umami.track(name, data);
+    }
+  } catch {
+    // analytics unavailable
+  }
+}
+
 type Answers = {
   problema: string;
   situacao: string;
@@ -241,6 +251,10 @@ export default function Diagnostico() {
 
   const set = (k: keyof Answers, v: string) => setA((prev) => ({ ...prev, [k]: v }));
 
+  useEffect(() => {
+    trackEvent("diagnostico_inicio");
+  }, []);
+
   const canNext =
     (step === 0 && a.problema !== "") ||
     (step === 1 && (isOutro ? a.descricaoLivre.trim().length > 5 : a.situacao !== "")) ||
@@ -250,6 +264,11 @@ export default function Diagnostico() {
 
   function goNext() {
     if (!canNext) return;
+    const nextStep = Math.min(TOTAL_STEPS - 1, step + 1);
+    if (step === 0) trackEvent("diagnostico_area_selecionada", { area: a.problema });
+    if (nextStep === 2) trackEvent("diagnostico_etapa_2", { area: a.problema });
+    if (nextStep === 3) trackEvent("diagnostico_etapa_3", { area: a.problema, documentos: a.documentos });
+    if (nextStep === 4) trackEvent("diagnostico_etapa_4", { area: a.problema });
     setDirection(1);
     setStep((s) => Math.min(TOTAL_STEPS - 1, s + 1));
   }
@@ -257,6 +276,17 @@ export default function Diagnostico() {
   function goBack() {
     setDirection(-1);
     setStep((s) => Math.max(0, s - 1));
+  }
+
+  function AreaBadge() {
+    if (step === 0 || !selectedProblema) return null;
+    const Icon = selectedProblema.icon;
+    return (
+      <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5">
+        <Icon className="h-3.5 w-3.5 text-primary" />
+        <span className="text-xs font-medium text-primary">{selectedProblema.label}</span>
+      </div>
+    );
   }
 
   function enviarWhatsApp() {
@@ -270,6 +300,7 @@ Cidade: ${a.cidade}
 WhatsApp: ${a.whatsappNum}
 
 Aguardo orientação sobre os próximos passos.`;
+    trackEvent("diagnostico_whatsapp_click", { area: a.problema, documentos: a.documentos });
     window.open(whatsapp(msg), "_blank", "noopener,noreferrer");
   }
 
@@ -353,6 +384,7 @@ Aguardo orientação sobre os próximos passos.`;
               {/* ETAPA 2 — Detalhamento */}
               {step === 1 && (
                 <motion.div key="step1" variants={animVariants} initial="initial" animate="animate" exit="exit" transition={stepAnim.transition}>
+                  <AreaBadge />
                   <h2 className="font-serif text-2xl font-semibold text-foreground">
                     {isOutro ? "Descreva brevemente o seu problema" : "Qual é a sua situação?"}
                   </h2>
@@ -403,6 +435,7 @@ Aguardo orientação sobre os próximos passos.`;
               {/* ETAPA 3 — Documentos */}
               {step === 2 && (
                 <motion.div key="step2" variants={animVariants} initial="initial" animate="animate" exit="exit" transition={stepAnim.transition}>
+                  <AreaBadge />
                   <div className="flex items-center gap-3">
                     <FileText className="h-6 w-6 text-primary" />
                     <h2 className="font-serif text-2xl font-semibold text-foreground">
@@ -442,6 +475,7 @@ Aguardo orientação sobre os próximos passos.`;
               {/* ETAPA 4 — Localização e contato */}
               {step === 3 && (
                 <motion.div key="step3" variants={animVariants} initial="initial" animate="animate" exit="exit" transition={stepAnim.transition}>
+                  <AreaBadge />
                   <div className="flex items-center gap-3">
                     <MapPin className="h-6 w-6 text-primary" />
                     <h2 className="font-serif text-2xl font-semibold text-foreground">
@@ -493,6 +527,7 @@ Aguardo orientação sobre os próximos passos.`;
               {/* ETAPA 5 — Resultado */}
               {step === 4 && (
                 <motion.div key="step4" variants={animVariants} initial="initial" animate="animate" exit="exit" transition={stepAnim.transition}>
+                  <AreaBadge />
                   <div className="flex items-center gap-3">
                     <ClipboardList className="h-6 w-6 text-primary" />
                     <h2 className="font-serif text-2xl font-semibold text-foreground">
