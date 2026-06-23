@@ -745,6 +745,240 @@ O Código Florestal prevê instrumentos para regularizar passivos de **Reserva L
 
 *Texto informativo. O diagnóstico da sua propriedade é individual.*`,
   },
+  {
+    slug: "multa-ibama-acre-defesa",
+    titulo: "Multa do IBAMA no Acre: como funciona a defesa administrativa",
+    resumo:
+      "Entenda os prazos, os tipos de vício e as estratégias de defesa contra autos de infração do IBAMA na Amazônia Legal.",
+    categoria: "Agro",
+    data: "2026-04-15",
+    leitura: "7 min",
+    conteudo: `O produtor rural no Acre que recebe uma **multa do IBAMA** precisa agir dentro dos prazos legais. A defesa administrativa bem instruída pode resultar em **anulação, redução significativa ou conversão** da penalidade.
+
+## Prazos e procedimento
+
+Após a lavratura do auto de infração, o autuado tem **20 dias** para apresentar **defesa administrativa** (art. 113 do Decreto nº 6.514/2008). Perder esse prazo não elimina o direito de recurso, mas reduz as possibilidades de defesa.
+
+## Tipos de vícios que podem anular a multa
+
+A defesa técnica analisa:
+
+- **Vícios formais**: ausência de elementos obrigatórios no auto (data, local, descrição precisa da conduta, fundamentação legal);
+- **Vícios materiais**: erro na quantificação da área, no enquadramento legal ou na tipificação da infração;
+- **Proporcionalidade**: multas manifestamente desproporcionais ao dano ambiental efetivo.
+
+## Possibilidades de redução
+
+O Decreto nº 6.514/2008 prevê **conversão de multa em serviços de preservação** (art. 143 e seguintes). Além disso, a adesão ao **Programa de Regularização Ambiental (PRA)** pode suspender a exigibilidade da multa enquanto o produtor estiver em regularização.
+
+> Na Amazônia Legal, a complexidade da legislação ambiental exige defesa especializada. Muitos autos são reduzidos ou anulados por falhas na instrução.
+
+## Parcelamento
+
+Quando a manutenção da multa é inevitável, a legislação permite **parcelamento** em até 60 meses, evitando a inscrição em dívida ativa.
+
+*Conteúdo informativo. Cada auto de infração exige análise individualizada dos fatos e da documentação.*`,
+  },
+  {
+    slug: "embargo-ambiental-acre",
+    titulo: "Embargo ambiental no Acre: o que fazer para desembargar a propriedade",
+    resumo:
+      "Propriedade embargada pelo IBAMA ou SEMA? Conheça os caminhos administrativos e judiciais para o desembargo no Acre.",
+    categoria: "Agro",
+    data: "2026-05-02",
+    leitura: "8 min",
+    conteudo: `O **embargo ambiental** impede o uso econômico da área atingida. Para o produtor rural no Acre, isso pode significar a paralisação de toda a atividade produtiva.
+
+## O que é o embargo e quando é aplicado
+
+O embargo é uma **sanção administrativa** prevista no art. 101 do Decreto nº 6.514/2008, aplicada quando há constatação de infração ambiental. O objetivo é cessar a atividade lesiva ao meio ambiente.
+
+O embargo pode ser:
+
+- **Total**: toda a propriedade fica impedida;
+- **Parcial**: somente a área específica da infração.
+
+## Caminhos para o desembargo
+
+### 1. Defesa administrativa
+
+O autuado pode impugnar o embargo junto ao próprio órgão (IBAMA ou SEMA), demonstrando:
+
+- Que a área embargada **não corresponde** à área efetivamente degradada;
+- Que houve **vício formal** no procedimento;
+- Que a atividade exercida **é regular** e possui licenciamento.
+
+### 2. Regularização ambiental (PRA)
+
+A adesão ao **Programa de Regularização Ambiental** pode viabilizar o desembargo, desde que o produtor demonstre estar em processo de recomposição ou compensação ambiental.
+
+### 3. Via judicial
+
+Quando a defesa administrativa é insuficiente, é possível buscar o **desembargo judicial**, especialmente quando há:
+
+- Desproporcionalidade entre a infração e a extensão do embargo;
+- Embargo mantido mesmo após regularização;
+- Dano econômico desproporcional ao produtor.
+
+## SEMA vs IBAMA
+
+No Acre, o produtor pode ser autuado tanto pela **SEMA** (órgão estadual) quanto pelo **IBAMA** (federal). A defesa é distinta para cada órgão, com prazos e procedimentos próprios.
+
+> O embargo não é definitivo. A estratégia correta pode reverter a situação e devolver a área à produção.
+
+*Este conteúdo é informativo. A análise do embargo e da defesa é individualizada.*`,
+  },
+  {
+    slug: "regularizar-propriedade-rural-acre",
+    titulo: "Como regularizar propriedade rural no Acre: guia prático",
+    resumo:
+      "Passo a passo para regularizar a documentação de imóvel rural no Acre: INCRA, ITERACRE, georreferenciamento e usucapião.",
+    categoria: "Agro",
+    data: "2026-05-20",
+    leitura: "8 min",
+    conteudo: `A **regularização de propriedade rural** no Acre depende de diversos fatores: a origem da terra, o tempo de ocupação, a existência de documentação e o órgão competente.
+
+## 1. Identifique a quem pertence a terra
+
+O primeiro passo é saber se a terra é:
+
+- **Da União** → regularização via **INCRA** (Lei nº 11.952/2009);
+- **Do Estado do Acre** → regularização via **ITERACRE**;
+- **Particular** → usucapião ou regularização registral.
+
+## 2. Documente a posse
+
+Reúna tudo que comprove a ocupação e o uso da terra:
+
+- Contratos de compra e venda, recibos, declarações;
+- Notas de produtor rural, ITR, CCIR;
+- Cadastro no INCRA (SNCR);
+- CAR (Cadastro Ambiental Rural);
+- Testemunhos de vizinhos e lideranças locais.
+
+## 3. Georreferenciamento
+
+O **georreferenciamento certificado pelo INCRA** (Lei 10.267/2001) é requisito para a maioria dos procedimentos de regularização e para atos registrais (venda, hipoteca, transferência).
+
+## 4. Procedimento administrativo ou judicial
+
+- **Titulação administrativa**: para posses em terras públicas, dentro dos critérios legais;
+- **Usucapião especial rural** (art. 191, CF): para posses contínuas, pacíficas e produtivas de até 50 hectares, sem outro imóvel;
+- **Usucapião extraordinário**: para posses longas (15 anos, reduzidos a 10 com moradia ou produção).
+
+## Por que regularizar
+
+O imóvel regularizado:
+
+- Tem valor de mercado significativamente maior;
+- Permite acesso a **crédito rural** (PRONAF, FNO);
+- Pode ser **hipotecado, vendido ou arrendado** com segurança;
+- Garante a **transmissão** do patrimônio aos herdeiros.
+
+> No Acre, a maioria dos imóveis rurais pode ser regularizada. O diagnóstico documental e fundiário define o caminho mais seguro.
+
+*Conteúdo informativo. Cada caso exige análise da documentação e da situação possessória.*`,
+  },
+  {
+    slug: "aposentadoria-rural-acre-segurado-especial",
+    titulo: "Aposentadoria rural no Acre: direitos do segurado especial",
+    resumo:
+      "Agricultor familiar e segurado especial no Acre: requisitos, prova material, idade e como requerer a aposentadoria rural.",
+    categoria: "Previdenciário",
+    data: "2026-06-05",
+    leitura: "7 min",
+    conteudo: `O **segurado especial** — agricultor familiar, pescador artesanal, extrativista — tem **tratamento diferenciado** na Constituição Federal (art. 195, §8º). No Acre, onde a atividade rural familiar é predominante, essa proteção é fundamental.
+
+## Quem é segurado especial
+
+É segurado especial quem exerce atividade rural **individualmente ou em regime de economia familiar**, sem utilização de empregados permanentes. Inclui:
+
+- **Agricultor familiar**;
+- **Pescador artesanal**;
+- **Extrativista** (seringueiro, castanheiro);
+- **Cônjuge ou companheiro** que participa da atividade.
+
+## Requisitos da aposentadoria
+
+- **Idade**: 60 anos (homem) / 55 anos (mulher);
+- **Comprovação**: período de carência em atividade rural (180 meses / 15 anos);
+- **Não exige contribuição formal**: o segurado especial contribui pela produção.
+
+## A prova material no Acre
+
+No Acre, os documentos mais comuns para comprovar a atividade rural são:
+
+- **Declaração do sindicato rural** homologada pelo INSS;
+- **Notas de produtor**, recibos de venda de produção;
+- **Contrato de parceria** ou arrendamento;
+- **ITR, CCIR, cadastro no INCRA**;
+- **Certidão de nascimento ou casamento** com profissão "lavrador";
+- **Comprovante de participação** em programas como PRONAF, Bolsa Verde;
+- **Certidão da FUNAI** (para comunidades indígenas).
+
+A **Súmula 149 do STJ** exige início de prova material, mas a prova testemunhal **complementa e amplia** o período comprovado documentalmente.
+
+## Estratégia para o produtor acreano
+
+O segurado especial que sempre trabalhou na roça, na pesca ou no extrativismo frequentemente tem dificuldade com a documentação. A estratégia consiste em:
+
+1. Reunir **todos** os documentos disponíveis (mesmo antigos e parciais);
+2. Organizar cronologicamente;
+3. Identificar lacunas que podem ser supridas por **prova testemunhal**;
+4. Instruir o pedido de forma coerente e completa.
+
+> No Acre, muitos segurados especiais têm o direito, mas perdem o benefício por falta de instrução documental adequada.
+
+*Conteúdo informativo. Avaliamos gratuitamente quais documentos você já possui e quais ainda precisam ser reunidos.*`,
+  },
+  {
+    slug: "consignado-indevido-inss-restituicao",
+    titulo: "Consignado indevido no INSS: como pedir a restituição dos valores",
+    resumo:
+      "Desconto de empréstimo consignado que você não contratou? Saiba como obter a suspensão, restituição e indenização.",
+    categoria: "Bancário",
+    data: "2026-06-18",
+    leitura: "6 min",
+    conteudo: `Aposentados e pensionistas do INSS são os mais afetados por **empréstimos consignados não contratados**. Os bancos realizam operações sem autorização clara, e o segurado só descobre ao ver o **desconto no benefício**.
+
+## Tipos mais comuns de fraude consignada
+
+- **Empréstimo que o beneficiário não contratou**: alguém utilizou seus dados para contratar em seu nome;
+- **Cartão consignado (RMC) disfarçado**: o segurado pretendia empréstimo pessoal e foi vinculado a cartão de crédito consignado, com descontos perpétuos;
+- **Seguro ou associação descontando**: vínculo a entidade ou seguro que o segurado não autorizou;
+- **Refinanciamento automático**: o banco refinancia o empréstimo sem autorização expressa.
+
+## Passo a passo para obter a restituição
+
+### 1. Obtenha o extrato de empréstimos (HISCON)
+
+Acesse o **Meu INSS** ou vá a uma agência e solicite o extrato de empréstimos consignados vinculados ao seu benefício. Esse extrato mostra todos os contratos ativos.
+
+### 2. Identifique os contratos irregulares
+
+Compare cada contrato com os empréstimos que você efetivamente autorizou. Solicite ao banco cópia do contrato — se ele não apresentar contrato assinado, a fraude fica evidenciada.
+
+### 3. Ação judicial
+
+Na Justiça, é possível obter:
+
+- **Declaração de inexistência do débito**;
+- **Suspensão imediata dos descontos** (tutela de urgência);
+- **Restituição dos valores descontados**, em dobro se comprovada má-fé (art. 42, CDC);
+- **Indenização por danos morais**.
+
+## O que diz o STJ
+
+O **STJ** tem jurisprudência consolidada reconhecendo a responsabilidade objetiva das instituições financeiras por fraudes em consignado (Súmula 479). A devolução em dobro foi reforçada pelo julgamento do EAREsp 676.608/RS.
+
+## Prazo
+
+A ação pode ser ajuizada enquanto os descontos estiverem ocorrendo, e o prazo prescricional para a restituição é de **5 anos** contados de cada desconto.
+
+> O primeiro passo é obter o extrato HISCON e comparar com os contratos que você realmente assinou.
+
+*Conteúdo informativo. A análise do seu extrato é individual e gratuita em nossa triagem inicial.*`,
+  },
 ];
 
 export function getPost(slug: string) {

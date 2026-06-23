@@ -31,6 +31,16 @@ const AGRO_FAQ = [
   { q: "Por que ter um hub jurídico especializado em Agro no Acre?", a: "O produtor rural na Amazônia Legal enfrenta um conjunto particular de obrigações fundiárias e ambientais — regularização de posse, CAR, Reserva Legal, APP, embargos do IBAMA e da SEMA — que se conectam entre si. Tratá-las de forma integrada dá segurança jurídica e valoriza a propriedade." },
   { q: "Regularização fundiária e ambiental são a mesma coisa?", a: "Não. A regularização fundiária trata da titulação e da propriedade/posse da terra (INCRA, ITERACRE). A ambiental trata da conformidade ecológica (CAR, Reserva Legal, APP, Código Florestal). Frequentemente caminham juntas, e por isso as reunimos neste hub." },
   { q: "Recebi um embargo ambiental. Ainda posso regularizar?", a: "Sim. O Código Florestal (Lei 12.651/2012) prevê instrumentos como o Programa de Regularização Ambiental (PRA), que podem suspender sanções. A defesa técnica do auto e do embargo analisa vícios e proporcionalidade, buscando anulação, redução ou desembargo." },
+  { q: "Recebi uma multa do IBAMA no Acre. Qual o prazo de defesa?", a: "O prazo para defesa administrativa é de 20 dias a partir da ciência do auto de infração (Decreto nº 6.514/2008). A defesa técnica pode resultar em anulação, redução significativa ou conversão da multa em serviços ambientais." },
+  { q: "Como regularizar propriedade rural no Acre sem título?", a: "Depende da origem da terra. Para terras da União, a regularização é feita via INCRA (Lei nº 11.952/2009). Para terras estaduais, via ITERACRE. Para terras particulares, pode-se ingressar com usucapião especial rural (art. 191, CF). O primeiro passo é o diagnóstico documental e fundiário." },
+  { q: "A SEMA pode embargar minha propriedade?", a: "Sim. A Secretaria de Meio Ambiente do Acre pode lavrar autos de infração e embargos por infrações ambientais estaduais. A defesa administrativa segue procedimento próprio, com prazos e instâncias recursais distintos do IBAMA." },
+];
+
+const AGRO_CONTEUDOS = [
+  { slug: "multa-ibama-acre-defesa", titulo: "Multa do IBAMA no Acre: como funciona a defesa", categoria: "Defesa IBAMA" },
+  { slug: "embargo-ambiental-acre", titulo: "Embargo ambiental: como desembargar a propriedade", categoria: "Embargos" },
+  { slug: "regularizar-propriedade-rural-acre", titulo: "Como regularizar propriedade rural no Acre", categoria: "Fundiário" },
+  { slug: "agro-regularizacao-ambiental", titulo: "Defesa em embargos e regularização ambiental", categoria: "CAR/PRA" },
 ];
 
 export default function Agro() {
@@ -164,6 +174,37 @@ export default function Agro() {
                 <h3 className="mt-4 font-serif text-base font-semibold text-foreground">{tema.titulo}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tema.texto}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Conteúdo estratégico Agro */}
+      <section className="bg-secondary/30 py-20">
+        <div className="container">
+          <div className="reveal max-w-2xl">
+            <Eyebrow>Conteúdo especializado</Eyebrow>
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance sm:text-4xl">
+              Orientação jurídica para o produtor rural
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Artigos técnicos sobre as situações mais comuns enfrentadas pelo produtor no Acre.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {AGRO_CONTEUDOS.map((c) => (
+              <Link
+                key={c.slug}
+                href={`/blog/${c.slug}`}
+                className="lift reveal group flex flex-col rounded-2xl border border-border bg-card p-6 hover:border-agro/40"
+              >
+                <span className="text-xs font-semibold uppercase tracking-wider text-agro">{c.categoria}</span>
+                <h3 className="mt-3 font-serif text-lg font-semibold leading-snug text-foreground">{c.titulo}</h3>
+                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-agro">
+                  Ler artigo
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
