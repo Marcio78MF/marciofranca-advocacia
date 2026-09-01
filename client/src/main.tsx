@@ -11,10 +11,12 @@ if (
   !String(analyticsEndpoint).includes("%") &&
   !String(analyticsWebsiteId).includes("%")
 ) {
+  const src = String(analyticsEndpoint).replace(/\/$/, "");
   const script = document.createElement("script");
   script.defer = true;
-  script.src = `${String(analyticsEndpoint).replace(/\/$/, "")}/umami`;
+  script.src = src.endsWith(".js") ? src : `${src}/script.js`;
   script.dataset.websiteId = String(analyticsWebsiteId);
+  script.dataset.domains = "www.marciofranca.adv.br,marciofranca.adv.br";
   document.body.appendChild(script);
 }
 
