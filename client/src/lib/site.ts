@@ -32,7 +32,7 @@ export const FIRM = {
   mapsLink:
     "https://www.google.com/maps/search/?api=1&query=Av.%20Epaminondas%20J%C3%A1come%2C%202172%2C%20Cer%C3%A2mica%2C%20Rio%20Branco%20-%20AC%2C%2069905-076",
   reviewsLink: "https://www.google.com/search?q=Advocacia+Dr.+M%C3%A1rcio+Fran%C3%A7a",
-  site: "https://marciofranca.adv.br",
+  site: "https://www.marciofranca.adv.br",
 };
 
 const WPP_BASE = `https://wa.me/${FIRM.telefoneRaw}`;
