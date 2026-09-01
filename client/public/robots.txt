@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marciofranca.adv.br/sitemap.xml
+Sitemap: https://www.marciofranca.adv.br/sitemap.xml

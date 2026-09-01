@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://marciofranca.adv.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://marciofranca.adv.br/sobre</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marciofranca.adv.br/areas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marciofranca.adv.br/agro</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/diagnostico</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/sobre</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/areas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/agro</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/diagnostico</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <!-- Áreas de Atuação -->
-  <url><loc>https://marciofranca.adv.br/bpc-loas</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/aposentadoria-rural</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/consignado-indevido</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/energisa</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/familia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marciofranca.adv.br/criminal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://marciofranca.adv.br/regularizacao-fundiaria</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://marciofranca.adv.br/ambiental-rural</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/bpc-loas</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/aposentadoria-rural</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/consignado-indevido</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/energisa</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/familia</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/criminal</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/regularizacao-fundiaria</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/ambiental-rural</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <!-- Blog -->
-  <url><loc>https://marciofranca.adv.br/blog/bpc-loas-como-funciona</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/consignado-indevido-rmc</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/aposentadoria-rural-prova</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/energisa-conta-alta-corte</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/agro-regularizacao-ambiental</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/multa-ibama-acre-defesa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/embargo-ambiental-acre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/regularizar-propriedade-rural-acre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/aposentadoria-rural-acre-segurado-especial</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://marciofranca.adv.br/blog/consignado-indevido-inss-restituicao</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/bpc-loas-como-funciona</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/consignado-indevido-rmc</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/aposentadoria-rural-prova</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/energisa-conta-alta-corte</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/agro-regularizacao-ambiental</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/multa-ibama-acre-defesa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/embargo-ambiental-acre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/regularizar-propriedade-rural-acre</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/aposentadoria-rural-acre-segurado-especial</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.marciofranca.adv.br/blog/consignado-indevido-inss-restituicao</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { FIRM, ASSETS } from "./site";
 
-const SITE_URL = "https://marciofranca.adv.br";
+const SITE_URL = "https://www.marciofranca.adv.br";
 
 type SeoInput = {
   title: string;
@@ -42,13 +42,13 @@ export function useSeo({ title, description, path = "/", jsonLd }: SeoInput) {
     setMeta("property", "og:description", description);
     setMeta("property", "og:type", "website");
     setMeta("property", "og:url", url);
-    setMeta("property", "og:image", ASSETS.ogImage);
+    setMeta("property", "og:image", `${SITE_URL}${ASSETS.ogImage}`);
     setMeta("property", "og:locale", "pt_BR");
     setMeta("property", "og:site_name", FIRM.nome);
     setMeta("name", "twitter:card", "summary_large_image");
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
-    setMeta("name", "twitter:image", ASSETS.ogImage);
+    setMeta("name", "twitter:image", `${SITE_URL}${ASSETS.ogImage}`);
     setLink("canonical", url);
 
     // JSON-LD
@@ -88,7 +88,7 @@ export const legalServiceSchema = [
     jobTitle: "Advogado",
     description: "Advogado responsável pelo escritório Márcio França Advocacia, inscrito na OAB/AC sob o nº 2882.",
     url: SITE_URL,
-    image: ASSETS.ogImage,
+    image: `${SITE_URL}${ASSETS.ogImage}`,
     telephone: "+55-68-99951-1555",
     worksFor: { "@type": "LegalService", "@id": `${SITE_URL}/#legalservice` },
     knowsAbout: [
@@ -107,7 +107,7 @@ export const legalServiceSchema = [
     description:
       "Advocacia estratégica, técnica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. Direito previdenciário, bancário, do consumidor, de família, criminal e agro.",
     url: SITE_URL,
-    image: ASSETS.ogImage,
+    image: `${SITE_URL}${ASSETS.ogImage}`,
     telephone: "+55-68-99951-1555",
     founder: { "@type": "Person", name: "Márcio França", jobTitle: "Advogado" },
     areaServed: [
