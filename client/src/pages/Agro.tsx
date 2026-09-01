@@ -16,14 +16,14 @@ const PILARES = [
 ];
 
 const AGRO_TEMAS = [
-  { icon: MapPinned, titulo: "Regularização Fundiária", texto: "Titulação, usucapião rural e regularização junto a INCRA, ITERACRE e SPU para garantir a propriedade da terra." },
-  { icon: FileCheck, titulo: "CAR — Cadastro Ambiental Rural", texto: "Inscrição, retificação e validação do CAR, pré-requisito para acesso a crédito e regularização ambiental." },
-  { icon: TreePine, titulo: "Reserva Legal e APP", texto: "Adequação ao Código Florestal: recomposição, regeneração natural ou compensação de Reserva Legal e APP." },
-  { icon: Sprout, titulo: "PRA — Programa de Regularização Ambiental", texto: "Adesão ao PRA para suspensão de sanções e regularização de passivos ambientais da propriedade." },
-  { icon: MapPinned, titulo: "Georreferenciamento", texto: "Certificação INCRA dos limites do imóvel, requisito para atos registrais e segurança jurídica da propriedade." },
-  { icon: Building2, titulo: "SEMA — Defesa Administrativa", texto: "Defesa em autos de infração e embargos da Secretaria de Meio Ambiente do Acre." },
-  { icon: Shield, titulo: "IBAMA — Defesa em Embargos", texto: "Defesa técnica contra autos de infração, multas e embargos federais, com análise de vícios e proporcionalidade." },
-  { icon: Gavel, titulo: "Licenciamento Ambiental", texto: "Assessoria em processos de licenciamento para atividades rurais, incluindo LP, LI e LO." },
+  { icon: MapPinned, titulo: "Regularização Fundiária", texto: "Titulação, usucapião rural e regularização junto a INCRA, ITERACRE e SPU para garantir a propriedade da terra.", href: "/regularizacao-fundiaria" },
+  { icon: FileCheck, titulo: "CAR — Cadastro Ambiental Rural", texto: "Inscrição, retificação e validação do CAR, pré-requisito para acesso a crédito e regularização ambiental.", href: "/ambiental-rural" },
+  { icon: TreePine, titulo: "Reserva Legal e APP", texto: "Adequação ao Código Florestal: recomposição, regeneração natural ou compensação de Reserva Legal e APP.", href: "/ambiental-rural" },
+  { icon: Sprout, titulo: "PRA — Programa de Regularização Ambiental", texto: "Adesão ao PRA para suspensão de sanções e regularização de passivos ambientais da propriedade.", href: "/ambiental-rural" },
+  { icon: MapPinned, titulo: "Georreferenciamento", texto: "Certificação INCRA dos limites do imóvel, requisito para atos registrais e segurança jurídica da propriedade.", href: "/regularizacao-fundiaria" },
+  { icon: Building2, titulo: "SEMA — Defesa Administrativa", texto: "Defesa em autos de infração e embargos da Secretaria de Meio Ambiente do Acre.", href: "/blog/embargo-ambiental-acre" },
+  { icon: Shield, titulo: "IBAMA — Defesa em Embargos", texto: "Defesa técnica contra autos de infração, multas e embargos federais, com análise de vícios e proporcionalidade.", href: "/blog/embargo-ambiental-acre" },
+  { icon: Gavel, titulo: "Licenciamento Ambiental", texto: "Assessoria em processos de licenciamento para atividades rurais, incluindo LP, LI e LO.", href: "/ambiental-rural" },
   { icon: Tractor, titulo: "Produtor Rural — Direitos e Obrigações", texto: "Orientação jurídica completa para o produtor: contratos agrários, crédito rural, PRONAF e seguro agrícola." },
 ];
 
@@ -162,19 +162,27 @@ export default function Agro() {
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {AGRO_TEMAS.map((tema, i) => (
-              <div
-                key={tema.titulo}
-                className="reveal rounded-2xl border border-border bg-card p-5"
-                style={{ transitionDelay: `${i * 50}ms` }}
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-agro/10 text-agro">
-                  <tema.icon className="h-5 w-5" />
+            {AGRO_TEMAS.map((tema, i) => {
+              const body = (
+                <>
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-agro/10 text-agro">
+                    <tema.icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-4 font-serif text-base font-semibold text-foreground">{tema.titulo}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tema.texto}</p>
+                </>
+              );
+              const cls = "reveal rounded-2xl border border-border bg-card p-5";
+              return "href" in tema && tema.href ? (
+                <Link key={tema.titulo} href={tema.href} className={`${cls} lift hover:border-agro/40`} style={{ transitionDelay: `${i * 50}ms` }}>
+                  {body}
+                </Link>
+              ) : (
+                <div key={tema.titulo} className={cls} style={{ transitionDelay: `${i * 50}ms` }}>
+                  {body}
                 </div>
-                <h3 className="mt-4 font-serif text-base font-semibold text-foreground">{tema.titulo}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{tema.texto}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

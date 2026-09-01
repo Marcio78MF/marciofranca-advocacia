@@ -30,7 +30,7 @@ export default function BlogPost({ slug }: { slug: string }) {
         author: { "@type": "Person", name: FIRM.advogado },
         publisher: { "@type": "Organization", name: FIRM.nome },
         articleSection: post.categoria,
-        url: `https://marciofranca.adv.br/blog/${post.slug}`,
+        url: `https://www.marciofranca.adv.br/blog/${post.slug}`,
       },
       breadcrumbSchema([
         { name: "Início", path: "/" },
@@ -40,8 +40,25 @@ export default function BlogPost({ slug }: { slug: string }) {
     ],
   });
 
-  const outros = POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
-  const areaRelacionada = AREAS.find((a) => a.categoria === post.categoria);
+  const AREA_DO_POST: Record<string, string> = {
+    "bpc-loas-como-funciona": "bpc-loas",
+    "consignado-indevido-rmc": "consignado-indevido",
+    "aposentadoria-rural-prova": "aposentadoria-rural",
+    "energisa-conta-alta-corte": "energisa",
+    "agro-regularizacao-ambiental": "ambiental-rural",
+    "multa-ibama-acre-defesa": "ambiental-rural",
+    "embargo-ambiental-acre": "ambiental-rural",
+    "regularizar-propriedade-rural-acre": "regularizacao-fundiaria",
+    "aposentadoria-rural-acre-segurado-especial": "aposentadoria-rural",
+    "consignado-indevido-inss-restituicao": "consignado-indevido",
+  };
+  const outros = [
+    ...POSTS.filter((p) => p.slug !== post.slug && p.categoria === post.categoria),
+    ...POSTS.filter((p) => p.slug !== post.slug && p.categoria !== post.categoria),
+  ].slice(0, 3);
+  const areaRelacionada =
+    AREAS.find((a) => a.slug === AREA_DO_POST[post.slug]) ||
+    AREAS.find((a) => a.categoria === post.categoria);
 
   return (
     <Layout>
