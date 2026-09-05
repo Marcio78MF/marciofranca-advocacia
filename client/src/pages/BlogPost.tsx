@@ -92,7 +92,11 @@ export default function BlogPost({ slug }: { slug: string }) {
               <Streamdown>{post.conteudo}</Streamdown>
             </div>
 
-            <div className="mt-12 flex flex-wrap items-center gap-4">
+            <p className="mt-10 border-t border-border pt-6 text-sm leading-relaxed text-muted-foreground">
+              Conteúdo informativo · Dr. Márcio França · OAB/AC 2882 · não substitui consulta.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
