@@ -71,7 +71,7 @@ export const AREAS: Area[] = [
     icone: "HeartHandshake",
     categoria: "Previdenciário",
     destaque: true,
-    ctaTexto: "Seu benefício foi negado? Envie sua documentação para análise.",
+    ctaTexto: "Seu benefício foi negado? Saiba quais documentos costumam ser analisados.",
     ctaWhatsapp: "Olá, tive meu BPC/LOAS negado e gostaria de uma análise do meu caso.",
     resumo:
       "O Benefício de Prestação Continuada (BPC/LOAS) garante um salário mínimo mensal à pessoa idosa (65 anos ou mais) ou à pessoa com deficiência que comprove não possuir meios de prover a própria manutenção. É um direito assistencial, não exige contribuição prévia ao INSS.",
@@ -137,7 +137,7 @@ export const AREAS: Area[] = [
     categoria: "Previdenciário",
     destaque: true,
     agro: true,
-    ctaTexto: "Trabalhou no campo e quer se aposentar? Avaliamos seus documentos.",
+    ctaTexto: "Trabalhou no campo? Entenda documentos e caminhos previstos em lei.",
     ctaWhatsapp: "Olá, sou trabalhador rural e gostaria de saber se tenho direito à aposentadoria.",
     resumo:
       "A aposentadoria rural por idade é devida ao trabalhador rural — inclusive o segurado especial (agricultor familiar, em regime de economia familiar) — que comprove o exercício de atividade rural pelo período exigido em lei, com idade reduzida (60 anos para homens e 55 para mulheres).",
@@ -509,7 +509,7 @@ export const AREAS: Area[] = [
     icone: "Trees",
     categoria: "Agro",
     agro: true,
-    ctaTexto: "Autuado pelo IBAMA ou SEMA? Avaliamos sua defesa administrativa.",
+    ctaTexto: "Autuado pelo IBAMA ou SEMA? Entenda documentos e caminhos administrativos previstos em lei.",
     ctaWhatsapp: "Olá, recebi um auto de infração/embargo ambiental e preciso de orientação jurídica.",
     resumo:
       "Assessoria jurídica ambiental para o produtor rural: Cadastro Ambiental Rural (CAR), regularização de Reserva Legal e Área de Preservação Permanente (APP), defesa em autos de infração e embargos do IBAMA e da SEMA, e adequação ao Código Florestal.",
@@ -624,15 +624,15 @@ O indeferimento administrativo **não encerra o direito**. É possível:
 1. Recorrer administrativamente;
 2. Ajuizar **ação judicial**, frequentemente com reanálise pericial e produção de prova social qualificada (estudo social, laudos, comprovantes de despesas).
 
-A instrução probatória robusta é decisiva. Por isso, a atuação técnica desde o requerimento aumenta significativamente as chances de êxito.
+A organização da documentação desde o requerimento costuma facilitar a análise administrativa ou judicial do pedido.
 
 *Este conteúdo tem caráter informativo e não substitui a análise individualizada do seu caso.*`,
   },
   {
     slug: "consignado-indevido-rmc",
-    titulo: "Descontos de consignado que você não reconhece: o que fazer",
+    titulo: "Cartão consignado (RMC): o que é e o que a lei permite questionar",
     resumo:
-      "Cartão consignado disfarçado de empréstimo (RMC), descontos não contratados e a possibilidade de devolução em dobro.",
+      "Quando o empréstimo vira cartão com Reserva de Margem Consignável (RMC): o que costuma ocorrer e quais hipóteses a lei e a jurisprudência permitem analisar.",
     categoria: "Bancário",
     data: "2026-02-03",
     leitura: "5 min",
@@ -681,7 +681,7 @@ A **Súmula 149 do STJ** é clara: a prova exclusivamente testemunhal não basta
 
 ## Estratégia probatória
 
-O êxito depende da **organização cronológica** das provas e da **coerência** entre documentos e testemunhos. Reunir, classificar e contextualizar cada documento faz diferença no resultado.
+A **organização cronológica** das provas e a **coerência** entre documentos e testemunhos costumam ser decisivas na análise do pedido. Reunir, classificar e contextualizar cada documento importa para a instrução.
 
 > O segurado especial em regime de economia familiar tem tratamento previdenciário diferenciado pela Constituição (art. 195, §8º).
 
@@ -715,35 +715,43 @@ Se o nome do consumidor foi **negativado** por dívida questionável ou inexiste
   },
   {
     slug: "agro-regularizacao-ambiental",
-    titulo: "Produtor rural autuado: defesa em embargos e regularização ambiental",
+    titulo: "CAR e PRA no Acre: regularização ambiental do imóvel rural",
     resumo:
-      "CAR, PRA, autos de infração do IBAMA/SEMA e os caminhos para regularizar a propriedade rural.",
+      "Cadastro Ambiental Rural (CAR), adesão ao PRA e o que a lei prevê para passivos de Reserva Legal e APP — conteúdo informativo.",
     categoria: "Agro",
     data: "2026-03-28",
     leitura: "7 min",
-    conteudo: `O produtor rural na Amazônia Legal convive com uma teia de obrigações ambientais. Receber um **auto de infração** ou um **embargo** do IBAMA ou da SEMA exige reação técnica e tempestiva.
+    conteudo: `O **Cadastro Ambiental Rural (CAR)** e o **Programa de Regularização Ambiental (PRA)** são instrumentos centrais do Código Florestal (Lei nº 12.651/2012) para a conformidade ambiental do imóvel rural na Amazônia Legal, inclusive no Acre.
 
 ## CAR: a porta de entrada da regularização
 
-O **Cadastro Ambiental Rural (CAR)** é obrigatório (Lei nº 12.651/2012, o Código Florestal) e é o ponto de partida para a regularização. A partir dele, é possível aderir ao **Programa de Regularização Ambiental (PRA)**, que pode **suspender sanções** e viabilizar a recomposição ou compensação de passivos.
+O **CAR** é obrigatório e organiza as informações ambientais da propriedade. A inscrição, a retificação e a validação do cadastro costumam ser pré-requisitos para crédito rural e para a adesão a programas de regularização.
 
-## Defesa em autos de infração e embargos
+Documentos frequentemente relacionados ao CAR incluem:
 
-Autos e embargos frequentemente contêm **vícios formais e materiais**. A defesa técnica analisa:
+- Recibo ou comprovante de inscrição;
+- Dados do imóvel e do possuidor/proprietário;
+- Informações sobre Reserva Legal e APP.
 
-- A legalidade e a competência do ato;
-- A **proporcionalidade** da sanção;
-- A correção da área embargada e do enquadramento.
+## PRA: Programa de Regularização Ambiental
 
-O objetivo é a **anulação**, a **redução** da penalidade ou o **desembargo** da área.
+A partir do CAR, a legislação prevê a possibilidade de adesão ao **PRA**, com regras próprias de recomposição, regeneração ou compensação de passivos. Em hipóteses previstas em lei, a adesão pode relacionar-se à **suspensão de sanções** enquanto o produtor cumpre o programa — sempre com análise do caso concreto.
 
 ## Reserva Legal e APP
 
-O Código Florestal prevê instrumentos para regularizar passivos de **Reserva Legal** e **Área de Preservação Permanente (APP)**, conciliando produção e conformidade ambiental.
+O Código Florestal prevê instrumentos para tratar passivos de **Reserva Legal** e **Área de Preservação Permanente (APP)**, conciliando produção e conformidade ambiental. O percentual e as regras variam conforme a localização e a legislação aplicável; no Acre, a leitura deve considerar o regime da Amazônia Legal.
 
-> A regularização ambiental, além de evitar sanções, valoriza a propriedade e dá segurança jurídica ao negócio rural.
+## Relação com autos e embargos
 
-*Texto informativo. O diagnóstico da sua propriedade é individual.*`,
+CAR e PRA **não substituem** a análise de um auto de infração ou de um embargo. Para esses temas, veja os conteúdos específicos:
+
+- [Multa do IBAMA no Acre: como funciona a defesa administrativa](/blog/multa-ibama-acre-defesa)
+- [Embargo ambiental no Acre: o que fazer para desembargar a propriedade](/blog/embargo-ambiental-acre)
+- Página geral: [Ambiental Rural](/ambiental-rural)
+
+> Este texto é informativo e descreve instrumentos legais. Não indica resultado de procedimento administrativo ou judicial.
+
+*Conteúdo informativo. O diagnóstico da propriedade é individual.*`,
   },
   {
     slug: "multa-ibama-acre-defesa",
@@ -935,7 +943,7 @@ O segurado especial que sempre trabalhou na roça, na pesca ou no extrativismo f
     slug: "consignado-indevido-inss-restituicao",
     titulo: "Consignado indevido no INSS: como pedir a restituição dos valores",
     resumo:
-      "Desconto de empréstimo consignado que você não contratou? Saiba como obter a suspensão, restituição e indenização.",
+      "Desconto de empréstimo consignado que você não contratou? Saiba sobre suspensão dos descontos e pedido de restituição — hipóteses e documentos.",
     categoria: "Bancário",
     data: "2026-06-18",
     leitura: "6 min",
