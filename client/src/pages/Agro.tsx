@@ -40,7 +40,7 @@ const AGRO_CONTEUDOS = [
   { slug: "multa-ibama-acre-defesa", titulo: "Multa do IBAMA no Acre: como funciona a defesa", categoria: "Defesa IBAMA" },
   { slug: "embargo-ambiental-acre", titulo: "Embargo ambiental: como desembargar a propriedade", categoria: "Embargos" },
   { slug: "regularizar-propriedade-rural-acre", titulo: "Como regularizar propriedade rural no Acre", categoria: "Fundiário" },
-  { slug: "agro-regularizacao-ambiental", titulo: "Defesa em embargos e regularização ambiental", categoria: "CAR/PRA" },
+  { slug: "agro-regularizacao-ambiental", titulo: "CAR e PRA no Acre: regularização ambiental", categoria: "CAR/PRA" },
 ];
 
 export default function Agro() {
