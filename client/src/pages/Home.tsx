@@ -9,18 +9,10 @@ import { Authority } from "@/components/Authority";
 import { AreaCard } from "@/components/AreaCard";
 import { HowItWorks } from "@/components/HowItWorks";
 import { GoogleReviews } from "@/components/GoogleReviews";
-import { AREAS, AREAS_DESTAQUE, ASSETS, FIRM } from "@/lib/site";
+import { AREAS, AREAS_DESTAQUE, ASSETS, FIRM, HOME_FAQ } from "@/lib/site";
 import { useSeo, legalServiceSchema, faqSchema } from "@/lib/seo";
 import { SeoLocal } from "@/components/SeoLocal";
 import { Faq } from "@/components/Faq";
-
-const HOME_FAQ = [
-  { q: "A consulta inicial é gratuita?", a: "O diagnóstico jurídico pelo site é gratuito e sem compromisso. Ele permite avaliar de forma preliminar se o seu caso exige providências jurídicas. A partir da análise inicial, informamos com transparência os custos de cada etapa." },
-  { q: "Quanto custa um processo?", a: "Os honorários variam conforme a complexidade do caso, a área de atuação e o trabalho envolvido. Antes de qualquer cobrança, apresentamos um contrato claro com todos os valores e condições. Em muitos casos, é possível atuar com honorários vinculados ao êxito." },
-  { q: "Quanto tempo demora um processo?", a: "Depende da área e do tipo de ação. Processos previdenciários costumam durar de 6 meses a 2 anos. Ações contra descontos bancários indevidos podem ter resultado em poucas semanas. Na análise inicial, informamos uma estimativa realista de prazo para o seu caso específico." },
-  { q: "Preciso ir ao escritório presencialmente?", a: "Não necessariamente. O atendimento pode ser feito inteiramente de forma digital — por WhatsApp, videochamada e assinatura eletrônica de documentos. O escritório está em Rio Branco/AC, mas atende clientes em todo o Brasil." },
-  { q: "Como funciona o diagnóstico jurídico no site?", a: "É um questionário simples de 5 etapas que leva cerca de 2 minutos. Você informa o tipo de problema, a situação e os documentos que possui. Ao final, recebe orientação preliminar sobre as providências possíveis. Nenhum dado sensível é coletado — apenas informações necessárias para a análise inicial." },
-];
 
 export default function Home() {
   useSeo({
