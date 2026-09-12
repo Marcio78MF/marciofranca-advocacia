@@ -14,30 +14,37 @@ export function Eyebrow({ children, className }: { children: ReactNode; classNam
   );
 }
 
-export function CtaButtons({ className, light, wppLabel, wppMsg }: { className?: string; light?: boolean; wppLabel?: string; wppMsg?: string }) {
+export function CtaButtons({ className, light, wppLabel, wppMsg, showDiagnosticoHint }: { className?: string; light?: boolean; wppLabel?: string; wppMsg?: string; showDiagnosticoHint?: boolean }) {
   return (
-    <div className={cn("flex flex-col gap-3 sm:flex-row", className)}>
-      <a
-        href={whatsapp(wppMsg)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-press btn-wpp inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold shadow-sm"
-      >
-        <MessageCircle className="h-4 w-4" />
-        {wppLabel ?? "Falar no WhatsApp"}
-      </a>
-      <Link
-        href="/diagnostico"
-        className={cn(
-          "btn-press inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors",
-          light
-            ? "border-white/30 text-white hover:bg-white/10"
-            : "border-border text-foreground hover:bg-accent",
-        )}
-      >
-        <ClipboardList className="h-4 w-4" />
-        Fazer Diagnóstico Jurídico
-      </Link>
+    <div className={cn("flex flex-col gap-3", className)}>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <a
+          href={whatsapp(wppMsg)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-press btn-wpp inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold shadow-sm"
+        >
+          <MessageCircle className="h-4 w-4" />
+          {wppLabel ?? "Falar no WhatsApp"}
+        </a>
+        <Link
+          href="/diagnostico"
+          className={cn(
+            "btn-press inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors",
+            light
+              ? "border-white/30 text-white hover:bg-white/10"
+              : "border-border text-foreground hover:bg-accent",
+          )}
+        >
+          <ClipboardList className="h-4 w-4" />
+          Fazer Diagnóstico Jurídico
+        </Link>
+      </div>
+      {showDiagnosticoHint && (
+        <p className={cn("text-xs", light ? "text-white/50" : "text-muted-foreground")}>
+          Descubra em 2 minutos se seu caso exige análise jurídica. Gratuito e sem compromisso.
+        </p>
+      )}
     </div>
   );
 }

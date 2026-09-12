@@ -992,3 +992,21 @@ A ação pode ser ajuizada enquanto os descontos estiverem ocorrendo, e o prazo 
 export function getPost(slug: string) {
   return POSTS.find((p) => p.slug === slug);
 }
+
+/* ===================== FAQ (Home e Agro) ===================== */
+export const HOME_FAQ = [
+  { q: "A consulta inicial é gratuita?", a: "O diagnóstico jurídico pelo site é gratuito e sem compromisso. Ele permite avaliar de forma preliminar se o seu caso exige providências jurídicas. A partir da análise inicial, informamos com transparência os custos de cada etapa." },
+  { q: "Quanto custa um processo?", a: "Os honorários variam conforme a complexidade do caso, a área de atuação e o trabalho envolvido. Antes de qualquer cobrança, apresentamos um contrato claro com todos os valores e condições. Em muitos casos, é possível atuar com honorários vinculados ao êxito." },
+  { q: "Quanto tempo demora um processo?", a: "Depende da área e do tipo de ação. Processos previdenciários costumam durar de 6 meses a 2 anos. Ações contra descontos bancários indevidos podem ter resultado em poucas semanas. Na análise inicial, informamos uma estimativa realista de prazo para o seu caso específico." },
+  { q: "Preciso ir ao escritório presencialmente?", a: "Não necessariamente. O atendimento pode ser feito inteiramente de forma digital — por WhatsApp, videochamada e assinatura eletrônica de documentos. O escritório está em Rio Branco/AC, mas atende clientes em todo o Brasil." },
+  { q: "Como funciona o diagnóstico jurídico no site?", a: "É um questionário simples de 5 etapas que leva cerca de 2 minutos. Você informa o tipo de problema, a situação e os documentos que possui. Ao final, recebe orientação preliminar sobre as providências possíveis. Nenhum dado sensível é coletado — apenas informações necessárias para a análise inicial." },
+];
+
+export const AGRO_FAQ = [
+  { q: "Por que ter um hub jurídico especializado em Agro no Acre?", a: "O produtor rural na Amazônia Legal enfrenta um conjunto particular de obrigações fundiárias e ambientais — regularização de posse, CAR, Reserva Legal, APP, embargos do IBAMA e da SEMA — que se conectam entre si. Tratá-las de forma integrada dá segurança jurídica e valoriza a propriedade." },
+  { q: "Regularização fundiária e ambiental são a mesma coisa?", a: "Não. A regularização fundiária trata da titulação e da propriedade/posse da terra (INCRA, ITERACRE). A ambiental trata da conformidade ecológica (CAR, Reserva Legal, APP, Código Florestal). Frequentemente caminham juntas, e por isso as reunimos neste hub." },
+  { q: "Recebi um embargo ambiental. Ainda posso regularizar?", a: "Sim. O Código Florestal (Lei 12.651/2012) prevê instrumentos como o Programa de Regularização Ambiental (PRA), que podem suspender sanções. A defesa técnica do auto e do embargo analisa vícios e proporcionalidade, buscando anulação, redução ou desembargo." },
+  { q: "Recebi uma multa do IBAMA no Acre. Qual o prazo de defesa?", a: "O prazo para defesa administrativa é de 20 dias a partir da ciência do auto de infração (Decreto nº 6.514/2008). A defesa técnica pode resultar em anulação, redução significativa ou conversão da multa em serviços ambientais." },
+  { q: "Como regularizar propriedade rural no Acre sem título?", a: "Depende da origem da terra. Para terras da União, a regularização é feita via INCRA (Lei nº 11.952/2009). Para terras estaduais, via ITERACRE. Para terras particulares, pode-se ingressar com usucapião especial rural (art. 191, CF). O primeiro passo é o diagnóstico documental e fundiário." },
+  { q: "A SEMA pode embargar minha propriedade?", a: "Sim. A Secretaria de Meio Ambiente do Acre pode lavrar autos de infração e embargos por infrações ambientais estaduais. A defesa administrativa segue procedimento próprio, com prazos e instâncias recursais distintos do IBAMA." },
+];

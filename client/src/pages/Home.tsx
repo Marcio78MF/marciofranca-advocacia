@@ -9,9 +9,10 @@ import { Authority } from "@/components/Authority";
 import { AreaCard } from "@/components/AreaCard";
 import { HowItWorks } from "@/components/HowItWorks";
 import { GoogleReviews } from "@/components/GoogleReviews";
-import { AREAS, AREAS_DESTAQUE, ASSETS, FIRM } from "@/lib/site";
-import { useSeo, legalServiceSchema } from "@/lib/seo";
+import { AREAS, AREAS_DESTAQUE, ASSETS, FIRM, HOME_FAQ } from "@/lib/site";
+import { useSeo, legalServiceSchema, faqSchema } from "@/lib/seo";
 import { SeoLocal } from "@/components/SeoLocal";
+import { Faq } from "@/components/Faq";
 
 export default function Home() {
   useSeo({
@@ -19,7 +20,7 @@ export default function Home() {
     description:
       "Defesa dos seus direitos perante o INSS, bancos, concessionárias de energia, conflitos familiares e processos criminais. Advocacia estratégica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. OAB/AC 2882.",
     path: "/",
-    jsonLd: legalServiceSchema,
+    jsonLd: [...legalServiceSchema, faqSchema(HOME_FAQ)],
   });
 
   return (
@@ -47,7 +48,7 @@ export default function Home() {
             <p className="mt-4 text-base leading-relaxed text-white/75 text-pretty max-w-xl">
               Atuação estratégica e personalizada nas áreas previdenciária, bancária, rural, familiar e criminal.
             </p>
-            <CtaButtons light className="mt-7" />
+            <CtaButtons light showDiagnosticoHint className="mt-7" />
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/60">
               <span className="flex items-center gap-2">
@@ -211,6 +212,25 @@ export default function Home() {
 
       <SeoLocal />
 
+
+      {/* DÚVIDAS FREQUENTES */}
+      <section className="bg-background py-24">
+        <div className="container">
+          <div className="reveal mx-auto max-w-3xl">
+            <Eyebrow>Dúvidas frequentes</Eyebrow>
+            <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance sm:text-4xl">
+              Perguntas comuns antes de buscar orientação jurídica
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              Reunimos as dúvidas mais frequentes de quem procura o escritório pela primeira vez.
+            </p>
+            <div className="mt-10">
+              <Faq items={HOME_FAQ} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA final */}
       <section className="relative overflow-hidden bg-navy py-24 text-white">
         <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
@@ -221,7 +241,7 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-xl text-base text-white/70 text-pretty">
             Conte sua situação. A análise inicial é objetiva, confidencial e sem compromisso.
           </p>
-          <CtaButtons light className="mt-8 justify-center" />
+          <CtaButtons light showDiagnosticoHint className="mt-8 justify-center" />
         </div>
       </section>
     </Layout>
