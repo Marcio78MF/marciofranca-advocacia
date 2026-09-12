@@ -5,7 +5,7 @@ import { Layout } from "@/components/Layout";
 import { Eyebrow, CtaButtons, CtaBand } from "@/components/Bits";
 import { AreaIcon } from "@/components/AreaCard";
 import { Faq } from "@/components/Faq";
-import { AREAS_AGRO, ASSETS, FIRM } from "@/lib/site";
+import { AREAS_AGRO, ASSETS, FIRM, AGRO_FAQ } from "@/lib/site";
 import { useSeo, legalServiceSchema, faqSchema, breadcrumbSchema } from "@/lib/seo";
 import { SeoLocal } from "@/components/SeoLocal";
 
@@ -25,15 +25,6 @@ const AGRO_TEMAS = [
   { icon: Shield, titulo: "IBAMA — Defesa em Embargos", texto: "Defesa técnica contra autos de infração, multas e embargos federais, com análise de vícios e proporcionalidade.", href: "/blog/embargo-ambiental-acre" },
   { icon: Gavel, titulo: "Licenciamento Ambiental", texto: "Assessoria em processos de licenciamento para atividades rurais, incluindo LP, LI e LO.", href: "/ambiental-rural" },
   { icon: Tractor, titulo: "Produtor Rural — Direitos e Obrigações", texto: "Orientação jurídica completa para o produtor: contratos agrários, crédito rural, PRONAF e seguro agrícola." },
-];
-
-const AGRO_FAQ = [
-  { q: "Por que ter um hub jurídico especializado em Agro no Acre?", a: "O produtor rural na Amazônia Legal enfrenta um conjunto particular de obrigações fundiárias e ambientais — regularização de posse, CAR, Reserva Legal, APP, embargos do IBAMA e da SEMA — que se conectam entre si. Tratá-las de forma integrada dá segurança jurídica e valoriza a propriedade." },
-  { q: "Regularização fundiária e ambiental são a mesma coisa?", a: "Não. A regularização fundiária trata da titulação e da propriedade/posse da terra (INCRA, ITERACRE). A ambiental trata da conformidade ecológica (CAR, Reserva Legal, APP, Código Florestal). Frequentemente caminham juntas, e por isso as reunimos neste hub." },
-  { q: "Recebi um embargo ambiental. Ainda posso regularizar?", a: "Sim. O Código Florestal (Lei 12.651/2012) prevê instrumentos como o Programa de Regularização Ambiental (PRA), que podem suspender sanções. A defesa técnica do auto e do embargo analisa vícios e proporcionalidade, buscando anulação, redução ou desembargo." },
-  { q: "Recebi uma multa do IBAMA no Acre. Qual o prazo de defesa?", a: "O prazo para defesa administrativa é de 20 dias a partir da ciência do auto de infração (Decreto nº 6.514/2008). A defesa técnica pode resultar em anulação, redução significativa ou conversão da multa em serviços ambientais." },
-  { q: "Como regularizar propriedade rural no Acre sem título?", a: "Depende da origem da terra. Para terras da União, a regularização é feita via INCRA (Lei nº 11.952/2009). Para terras estaduais, via ITERACRE. Para terras particulares, pode-se ingressar com usucapião especial rural (art. 191, CF). O primeiro passo é o diagnóstico documental e fundiário." },
-  { q: "A SEMA pode embargar minha propriedade?", a: "Sim. A Secretaria de Meio Ambiente do Acre pode lavrar autos de infração e embargos por infrações ambientais estaduais. A defesa administrativa segue procedimento próprio, com prazos e instâncias recursais distintos do IBAMA." },
 ];
 
 const AGRO_CONTEUDOS = [

@@ -10,6 +10,7 @@ import AreaPage from "./pages/AreaPage";
 import Agro from "./pages/Agro";
 import Diagnostico from "./pages/Diagnostico";
 import Sobre from "./pages/Sobre";
+import Privacidade from "./pages/Privacidade";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import { AREAS } from "./lib/site";
@@ -24,6 +25,7 @@ function Router() {
       <Route path="/agro" component={Agro} />
       <Route path="/diagnostico" component={Diagnostico} />
       <Route path="/sobre" component={Sobre} />
+      <Route path="/privacidade" component={Privacidade} />
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug">{(params) => <BlogPost slug={params.slug} />}</Route>
       {/* Landing pages das áreas de atuação */}
