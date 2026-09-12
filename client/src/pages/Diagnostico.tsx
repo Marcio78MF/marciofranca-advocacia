@@ -19,6 +19,7 @@ import {
   HelpCircle,
   ClipboardList,
 } from "lucide-react";
+import { Link } from "wouter";
 import { Layout } from "@/components/Layout";
 import { Eyebrow } from "@/components/Bits";
 import { FIRM, whatsapp } from "@/lib/site";
@@ -44,6 +45,8 @@ type Answers = {
   documentos: string;
   cidade: string;
   whatsappNum: string;
+  nome: string;
+  lgpd: boolean;
 };
 
 const EMPTY: Answers = {
@@ -53,6 +56,8 @@ const EMPTY: Answers = {
   documentos: "",
   cidade: "",
   whatsappNum: "",
+  nome: "",
+  lgpd: false,
 };
 
 type Problema = {
@@ -205,6 +210,51 @@ function formatPhone(raw: string): string {
   return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
 }
 
+/** Normaliza para E.164 BR: +55… */
+function normalizeFone(raw: string): string {
+  let d = raw.replace(/\D/g, "");
+  if (d.startsWith("55") && d.length >= 12) return `+${d}`;
+  if (d.length >= 10) return `+55${d}`;
+  return d ? `+55${d}` : "";
+}
+
+function mapProblemaToTema(problema: string): "Terra" | "INSS" | "Banco" | "Outro" {
+  const p = problema.toLowerCase();
+  if (p.includes("inss") || p.includes("aposentadoria rural")) return "INSS";
+  if (p.includes("desconto banc") || p.includes("bancário") || p.includes("bancario")) return "Banco";
+  if (
+    p.includes("fundiár") ||
+    p.includes("fundiar") ||
+    p.includes("ambiental") ||
+    p.includes("agro") ||
+    p.includes("ibama") ||
+    p.includes("propriedade") ||
+    p.includes("regularização") ||
+    p.includes("regularizacao")
+  ) {
+    return "Terra";
+  }
+  return "Outro";
+}
+
+function mapDocSn(documentos: string): "S" | "N" {
+  const d = documentos.trim().toLowerCase();
+  if (d.startsWith("sim") || d.startsWith("parcial")) return "S";
+  return "N";
+}
+
+function buildObs(a: Answers, isOutro: boolean): string {
+  const situacao = isOutro ? a.descricaoLivre.trim() : a.situacao.trim();
+  // Resumo curto, sem detalhe médico (Provimento 205 / LGPD).
+  const parts = [
+    a.problema,
+    situacao ? `Situação: ${situacao}` : "",
+    a.documentos ? `Docs: ${a.documentos}` : "",
+    a.cidade ? `Cidade: ${a.cidade}` : "",
+  ].filter(Boolean);
+  return parts.join(" · ").slice(0, 400);
+}
+
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -244,12 +294,13 @@ export default function Diagnostico() {
   const [step, setStep] = useHashStep();
   const [a, setA] = useState<Answers>(EMPTY);
   const [direction, setDirection] = useState(1);
+  const [submitting, setSubmitting] = useState(false);
 
   const selectedProblema = PROBLEMAS.find((p) => p.value === a.problema);
   const isOutro = a.problema === "Outro problema jurídico";
   const hasSituacoes = selectedProblema && selectedProblema.situacoes.length > 0;
 
-  const set = (k: keyof Answers, v: string) => setA((prev) => ({ ...prev, [k]: v }));
+  const set = <K extends keyof Answers>(k: K, v: Answers[K]) => setA((prev) => ({ ...prev, [k]: v }));
 
   useEffect(() => {
     trackEvent("diagnostico_inicio");
@@ -259,7 +310,10 @@ export default function Diagnostico() {
     (step === 0 && a.problema !== "") ||
     (step === 1 && (isOutro ? a.descricaoLivre.trim().length > 5 : a.situacao !== "")) ||
     (step === 2 && a.documentos !== "") ||
-    (step === 3 && a.cidade.trim().length > 1 && a.whatsappNum.replace(/\D/g, "").length >= 10) ||
+    (step === 3 &&
+      a.nome.trim().length > 1 &&
+      a.cidade.trim().length > 1 &&
+      a.whatsappNum.replace(/\D/g, "").length >= 10) ||
     step === 4;
 
   function goNext() {
@@ -289,18 +343,63 @@ export default function Diagnostico() {
     );
   }
 
-  function enviarWhatsApp() {
+  async function enviarTriagemEWhatsApp() {
+    if (!a.lgpd || submitting) return;
+
     const situacaoTexto = isOutro ? a.descricaoLivre : a.situacao;
+    const idExterno = `site-diag-${Date.now()}`;
+    const payload = {
+      nome: a.nome.trim(),
+      cidade: a.cidade.trim(),
+      fone: normalizeFone(a.whatsappNum),
+      tema: mapProblemaToTema(a.problema),
+      doc_sn: mapDocSn(a.documentos),
+      data_papel_sn: "N",
+      origem: "Site",
+      lgpd_sn: "S",
+      obs: buildObs(a, isOutro),
+      id_externo: idExterno,
+    };
+
+    setSubmitting(true);
+    let triagemOk = false;
+    try {
+      const res = await fetch("/api/triagem", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      triagemOk = res.ok;
+      if (!res.ok) {
+        trackEvent("diagnostico_triagem_fail", {
+          area: a.problema,
+          status: String(res.status),
+        });
+      } else {
+        trackEvent("diagnostico_triagem_ok", { area: a.problema });
+      }
+    } catch {
+      trackEvent("diagnostico_triagem_fail", { area: a.problema, status: "network" });
+    } finally {
+      setSubmitting(false);
+    }
+
     const msg = `Olá, vim pelo site marciofranca.adv.br e gostaria de uma análise inicial.
 
+Nome: ${a.nome.trim()}
 Tipo de problema: ${a.problema}
 Situação informada: ${situacaoTexto}
 Documentos: ${a.documentos}
 Cidade: ${a.cidade}
 WhatsApp: ${a.whatsappNum}
+Ref.: ${idExterno}
 
 Aguardo orientação sobre os próximos passos.`;
-    trackEvent("diagnostico_whatsapp_click", { area: a.problema, documentos: a.documentos });
+    trackEvent("diagnostico_whatsapp_click", {
+      area: a.problema,
+      documentos: a.documentos,
+      triagem: triagemOk ? "ok" : "fail",
+    });
     window.open(whatsapp(msg), "_blank", "noopener,noreferrer");
   }
 
@@ -488,6 +587,19 @@ Aguardo orientação sobre os próximos passos.`;
                   <div className="mt-6 space-y-4">
                     <div>
                       <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                        <Users className="h-3.5 w-3.5" />
+                        Nome completo
+                      </label>
+                      <input
+                        value={a.nome}
+                        onChange={(e) => set("nome", e.target.value)}
+                        placeholder="Como devemos nos dirigir a você"
+                        autoComplete="name"
+                        className="mt-1.5 w-full rounded-xl border border-border bg-background p-3.5 text-sm outline-none focus:border-primary focus:ring-1 focus:ring-primary"
+                      />
+                    </div>
+                    <div>
+                      <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
                         <MapPin className="h-3.5 w-3.5" />
                         Cidade / UF
                       </label>
@@ -538,6 +650,13 @@ Aguardo orientação sobre os próximos passos.`;
                   <div className="mt-6 rounded-xl bg-secondary/60 p-5">
                     <ul className="space-y-3 text-sm">
                       <li className="flex items-start gap-2">
+                        <Users className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <div>
+                          <span className="font-semibold text-foreground">Nome:</span>{" "}
+                          <span className="text-muted-foreground">{a.nome}</span>
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
                         {selectedProblema ? <selectedProblema.icon className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> : <Scale className="mt-0.5 h-4 w-4 shrink-0 text-primary" />}
                         <div>
                           <span className="font-semibold text-foreground">Tipo de problema:</span>{" "}
@@ -579,15 +698,34 @@ Aguardo orientação sobre os próximos passos.`;
                     <p className="text-sm leading-relaxed text-foreground">
                       Com base nas informações fornecidas, <strong>seu caso pode exigir análise jurídica individualizada</strong>.
                       O próximo passo é enviar esse resumo ao escritório pelo WhatsApp para avaliação inicial.
+                      Isso não constitui contratação nem garantia de resultado.
                     </p>
                   </div>
 
+                  <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-xl border border-border bg-background p-4">
+                    <input
+                      type="checkbox"
+                      checked={a.lgpd}
+                      onChange={(e) => set("lgpd", e.target.checked)}
+                      className="mt-1 h-4 w-4 shrink-0 rounded border-border text-primary focus:ring-primary"
+                    />
+                    <span className="text-xs leading-relaxed text-muted-foreground">
+                      Li e concordo com o tratamento dos meus dados para triagem e contato inicial,
+                      conforme a{" "}
+                      <Link href="/privacidade" className="font-medium text-primary underline-offset-2 hover:underline">
+                        Política de Privacidade
+                      </Link>{" "}
+                      (LGPD — Lei 13.709/2018). Sem este consentimento não damos continuidade.
+                    </span>
+                  </label>
+
                   <button
-                    onClick={enviarWhatsApp}
-                    className="btn-press btn-wpp mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold shadow-md"
+                    onClick={enviarTriagemEWhatsApp}
+                    disabled={!a.lgpd || submitting}
+                    className="btn-press btn-wpp mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 text-base font-semibold shadow-md disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     <MessageCircle className="h-5 w-5" />
-                    Enviar resumo pelo WhatsApp
+                    {submitting ? "Enviando triagem…" : "Enviar resumo pelo WhatsApp"}
                   </button>
                 </motion.div>
               )}
