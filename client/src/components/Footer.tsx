@@ -57,6 +57,7 @@ export function Footer() {
             <li><Link href="/diagnostico" className="text-white/65 transition-colors hover:text-white">Diagnóstico Jurídico</Link></li>
             <li><Link href="/blog" className="text-white/65 transition-colors hover:text-white">Blog</Link></li>
             <li><Link href="/sobre" className="text-white/65 transition-colors hover:text-white">Sobre o escritório</Link></li>
+            <li><Link href="/privacidade" className="text-white/65 transition-colors hover:text-white">Privacidade</Link></li>
             <li><Link href="/areas" className="text-white/65 transition-colors hover:text-white">Todas as áreas</Link></li>
           </ul>
         </div>

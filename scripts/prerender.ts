@@ -55,6 +55,19 @@ const routes: RouteMeta[] = [
     ],
   },
   {
+    path: "/privacidade",
+    title: `Política de Privacidade | ${FIRM.nome}`,
+    description:
+      "Como o escritório Márcio França Advocacia trata dados pessoais no site, no diagnóstico jurídico, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
+    jsonLd: [
+      legalServiceSchema,
+      breadcrumbSchema([
+        { name: "Início", path: "/" },
+        { name: "Privacidade", path: "/privacidade" },
+      ]),
+    ],
+  },
+  {
     path: "/areas",
     title: `Áreas de Atuação | ${FIRM.nome}`,
     description:
@@ -201,6 +214,29 @@ function renderHead(template: string, route: RouteMeta): string {
   return html.replace("</head>", `    ${extraTags}\n  </head>`);
 }
 
+function renderNotFound(template: string): string {
+  const title = "Página não encontrada | Márcio França Advocacia";
+  const description =
+    "O endereço solicitado não existe ou foi movido. Volte ao início ou confira as áreas de atuação.";
+  let html = renderHead(template, {
+    path: "/404",
+    title,
+    description,
+    jsonLd: [],
+  });
+  // Evita indexação da página de erro; canonical genérico de /404 não deve existir.
+  html = html
+    .replace(
+      /<meta name="robots" content="[^"]*"\s*\/>/,
+      '<meta name="robots" content="noindex, follow" />'
+    )
+    .replace(
+      /<link rel="canonical" href="[^"]*"\s*\/>/,
+      '<link rel="canonical" href="https://www.marciofranca.adv.br/" />'
+    );
+  return html;
+}
+
 function main() {
   const __dirname = dirname(fileURLToPath(import.meta.url));
   const distDir = join(__dirname, "..", "dist", "public");
@@ -225,8 +261,13 @@ function main() {
     writeFileSync(outPath, html, "utf-8");
   }
 
+  // 404.html: Vercel serve com status HTTP 404 quando o path não existe no filesystem
+  // (sem rewrite catch-all para index.html). O shell SPA hidrata o NotFound.tsx.
+  const notFoundPath = join(distDir, "404.html");
+  writeFileSync(notFoundPath, renderNotFound(template), "utf-8");
+
   console.log(
-    `[prerender] ${routes.length} rotas pré-renderizadas com SEO estático em ${distDir}`
+    `[prerender] ${routes.length} rotas pré-renderizadas + 404.html em ${distDir}`
   );
 }
 
