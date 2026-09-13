@@ -3,6 +3,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { RouteTransition } from "./components/RouteTransition";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { AREAS } from "./lib/site";
 
@@ -53,6 +54,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <RouteTransition />
           <Suspense
             fallback={
               <div className="min-h-screen bg-background" aria-live="polite" />

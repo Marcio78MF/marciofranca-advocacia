@@ -1,4 +1,4 @@
-/* Logo + wordmark — Márcio França Advocacia.
+/* Logo + wordmark — Márcio Jr. França Advocacia.
    Design: monograma MF (prata+navy) + wordmark serif Fraunces. */
 import { ASSETS, FIRM } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ export function Logo({
     <div className={cn("flex items-center gap-2.5", className)}>
       <img
         src={ASSETS.logo}
-        alt="Monograma MF — Márcio França Advocacia"
+        alt="Monograma MF — Márcio Jr. França Advocacia"
         className="h-9 w-auto shrink-0 select-none"
         width={31}
         height={36}
@@ -31,7 +31,7 @@ export function Logo({
               light ? "text-white" : "text-foreground"
             )}
           >
-            Márcio França
+            Márcio Jr. França
           </span>
           <span
             className={cn(

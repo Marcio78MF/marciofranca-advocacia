@@ -1,5 +1,5 @@
 /* ============================================================
-   MÁRCIO FRANÇA ADVOCACIA — Design System "Legal Tech Sereno"
+   MÁRCIO JR. FRANÇA ADVOCACIA — Design System "Legal Tech Sereno"
    Inspiração: Stripe / Linear / Vercel adaptado à advocacia
    Cor de marca: Navy #0F2A43 | Acento: Prata | Fundo: Marfim
    Tipografia: Fraunces (display serif) + Plus Jakarta Sans (UI)
@@ -186,8 +186,44 @@
   }
 
   /* Card elevável */
-  .lift { transition: transform 220ms var(--ease-out), box-shadow 220ms var(--ease-out), border-color 220ms var(--ease-out); }
-  .lift:hover { transform: translateY(-4px); }
+  .lift { transition: transform 280ms var(--ease-out), box-shadow 280ms var(--ease-out), border-color 280ms var(--ease-out); }
+  .lift:hover { transform: translateY(-6px) scale(1.008); }
+
+  .portrait-stack::before,
+  .portrait-stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.75rem;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    background: rgb(255 255 255 / 0.04);
+    pointer-events: none;
+  }
+  .portrait-stack::before { transform: translate(14px, 14px) rotate(2deg); }
+  .portrait-stack::after { transform: translate(-10px, 22px) rotate(-2.5deg); }
+  .portrait-card { position: relative; z-index: 1; }
+  .portrait-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 25%, rgb(255 255 255 / 0.12) 48%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 900ms var(--ease-out);
+    pointer-events: none;
+  }
+  .portrait-stack:hover .portrait-card::after { transform: translateX(120%); }
+
+  .brand-pillar { position: relative; }
+  .brand-pillar::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 1px;
+    background: var(--border);
+  }
+  .brand-pillar:last-child::after { display: none; }
 
   /* CTA WhatsApp — verde de marca do WhatsApp */
   .btn-wpp { background-color: #1FA855; color: #ffffff; }
@@ -208,6 +244,20 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; }
+  .route-card { display: none; }
+  .lift,
+  .portrait-card::after { transition: none; }
+}
+
+@media (max-width: 639px) {
+  .brand-pillar::after {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 1px;
+  }
 }
 
 .text-balance { text-wrap: balance; }

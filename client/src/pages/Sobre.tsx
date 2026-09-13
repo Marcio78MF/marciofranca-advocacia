@@ -18,7 +18,7 @@ export default function Sobre() {
   useSeo({
     title: `Sobre o escritório | ${FIRM.nome}`,
     description:
-      "Conheça o escritório Márcio França Advocacia: mais de 15 anos de atuação estratégica, técnica e personalizada, com sede em Rio Branco/AC e atuação digital em todo o Brasil.",
+      "Conheça o escritório Márcio Jr. França Advocacia: mais de 15 anos de atuação estratégica, técnica e personalizada, com sede em Rio Branco/AC e atuação digital em todo o Brasil.",
     path: "/sobre",
     jsonLd: [
       legalServiceSchema,
@@ -46,13 +46,13 @@ export default function Sobre() {
             </p>
           </div>
           <div className="relative mx-auto w-full max-w-sm">
-            <div className="overflow-hidden rounded-[1.75rem] border border-white/15 shadow-2xl">
+            <div className="portrait-card overflow-hidden rounded-[1.75rem] border border-white/15 shadow-2xl">
               <img
                 src={ASSETS.fotoRetrato}
                 alt={`${FIRM.advogado}, advogado responsável`}
-                className="h-full w-full object-cover"
-                width={420}
-                height={520}
+                className="aspect-square h-full w-full object-cover object-top"
+                width={720}
+                height={720}
               />
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function Sobre() {
         <div className="container grid gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="reveal">
             <div className="overflow-hidden rounded-3xl border border-border shadow-lg">
-              <img src={ASSETS.fotoVerde} alt={FIRM.advogado} className="h-full w-full object-cover" width={480} height={620} />
+              <img src={ASSETS.fotoVerde} alt={FIRM.advogado} className="aspect-[3/4] h-full w-full object-cover object-top" width={720} height={960} loading="lazy" />
             </div>
           </div>
           <div className="reveal">

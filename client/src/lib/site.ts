@@ -1,17 +1,17 @@
-/* Dados centrais do site Márcio França Advocacia */
+/* Dados centrais do site Márcio Jr. França Advocacia */
 
 export const ASSETS = {
   logo: "/images/logo-mf.png",
-  fotoVerde: "/images/IMG_5151-opt.jpg",
-  fotoRetrato: "/images/IMG_5136-opt.jpg",
+  fotoVerde: "/images/marcio-jr-franca-retrato.webp",
+  fotoRetrato: "/images/marcio-jr-franca-pb.webp",
   heroBg: "/images/hero-bg.webp",
   agroBg: "/images/agro-bg.webp",
-  ogImage: "/images/og-image.webp",
+  ogImage: "/images/marcio-jr-franca-og.webp",
 };
 
 export const FIRM = {
-  nome: "Márcio França Advocacia",
-  advogado: "Dr. Márcio França",
+  nome: "Márcio Jr. França Advocacia",
+  advogado: "Dr. Márcio Jr. França",
   oab: "OAB/AC 2882",
   cidade: "Rio Branco",
   uf: "AC",
@@ -21,7 +21,7 @@ export const FIRM = {
   telefoneFmt: "(68) 99951-1555",
   instagram: "marcio4dv",
   instagramUrl: "https://instagram.com/marcio4dv",
-  googleBusiness: "Advocacia Dr. Márcio França",
+  googleBusiness: "Advocacia Dr. Márcio Jr. França",
   posicionamento: "Atuação estratégica, técnica e personalizada.",
   endereco: "Av. Epaminondas Jácome, nº 2172",
   bairro: "Cerâmica",

@@ -119,7 +119,7 @@ export default function BlogPost({ slug }: { slug: string }) {
             </div>
 
             <p className="mt-10 border-t border-border pt-6 text-sm leading-relaxed text-muted-foreground">
-              Conteúdo informativo · Dr. Márcio França · OAB/AC 2882 · não
+              Conteúdo informativo · Dr. Márcio Jr. França · OAB/AC 2882 · não
               substitui consulta.
             </p>
 

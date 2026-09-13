@@ -45,7 +45,7 @@ const routes: RouteMeta[] = [
   {
     path: "/",
     title:
-      "Márcio França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
+      "Márcio Jr. França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
     description:
       "Defesa dos seus direitos perante o INSS, bancos, concessionárias de energia, conflitos familiares e processos criminais. Advocacia estratégica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. OAB/AC 2882.",
     jsonLd: [...legalServiceSchema, faqSchema(HOME_FAQ)],
@@ -54,7 +54,7 @@ const routes: RouteMeta[] = [
     path: "/sobre",
     title: `Sobre o escritório | ${FIRM.nome}`,
     description:
-      "Conheça o escritório Márcio França Advocacia: mais de 15 anos de atuação estratégica, técnica e personalizada, com sede em Rio Branco/AC e atuação digital em todo o Brasil.",
+      "Conheça o escritório Márcio Jr. França Advocacia: mais de 15 anos de atuação estratégica, técnica e personalizada, com sede em Rio Branco/AC e atuação digital em todo o Brasil.",
     jsonLd: [
       legalServiceSchema,
       breadcrumbSchema([
@@ -67,7 +67,7 @@ const routes: RouteMeta[] = [
     path: "/privacidade",
     title: `Política de Privacidade | ${FIRM.nome}`,
     description:
-      "Como o escritório Márcio França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
+      "Como o escritório Márcio Jr. França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
     jsonLd: [
       legalServiceSchema,
       breadcrumbSchema([
@@ -236,7 +236,7 @@ function renderHead(template: string, route: RouteMeta): string {
 }
 
 function renderNotFound(template: string): string {
-  const title = "Página não encontrada | Márcio França Advocacia";
+  const title = "Página não encontrada | Márcio Jr. França Advocacia";
   const description =
     "O endereço solicitado não existe ou foi movido. Volte ao início ou confira as áreas de atuação.";
   let html = renderHead(template, {

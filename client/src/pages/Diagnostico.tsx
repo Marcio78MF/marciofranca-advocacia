@@ -196,7 +196,7 @@ function useHashStep() {
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Triagem jurídica inicial — Márcio França Advocacia",
+  name: "Triagem jurídica inicial — Márcio Jr. França Advocacia",
   url: `${SITE}/diagnostico`,
   applicationCategory: "LegalService",
   operatingSystem: "All",

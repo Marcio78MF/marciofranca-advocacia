@@ -11,7 +11,7 @@ export default function Privacidade() {
   useSeo({
     title: `Política de Privacidade | ${FIRM.nome}`,
     description:
-      "Como o escritório Márcio França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
+      "Como o escritório Márcio Jr. França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
     path: "/privacidade",
     jsonLd: [
       legalServiceSchema,

@@ -1,4 +1,4 @@
-/* HOME — Márcio França Advocacia
+/* HOME — Márcio Jr. França Advocacia
    Estilo "Legal Tech Sereno": navy + prata + marfim, Fraunces + Plus Jakarta Sans.
    Hero assimétrico (texto à esquerda, foto à direita). */
 import { Link } from "wouter";
@@ -17,7 +17,7 @@ import { Faq } from "@/components/Faq";
 export default function Home() {
   useSeo({
     title:
-      "Márcio França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
+      "Márcio Jr. França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
     description:
       "Defesa dos seus direitos perante o INSS, bancos, concessionárias de energia, conflitos familiares e processos criminais. Advocacia estratégica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. OAB/AC 2882.",
     path: "/",
@@ -39,7 +39,7 @@ export default function Home() {
 
         <div className="container relative grid items-center gap-12 pb-16 pt-32 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8 lg:pb-24 lg:pt-40">
           <div>
-            <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-white/80">
+            <span className="eyebrow inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-white/80 backdrop-blur-sm">
               <Sparkles className="h-3.5 w-3.5" />
               {FIRM.posicionamento}
             </span>
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
 
           {/* Foto do advogado */}
-          <div className="relative mx-auto hidden w-full max-w-sm lg:block">
+          <div className="portrait-stack relative mx-auto w-full max-w-[17rem] sm:max-w-xs lg:max-w-sm">
             <div
               className="absolute -inset-4 rounded-[2rem] opacity-40 blur-2xl"
               style={{
@@ -79,13 +79,15 @@ export default function Home() {
                   "radial-gradient(circle at 60% 30%, rgba(156,168,181,0.55), transparent 70%)",
               }}
             />
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 shadow-2xl">
+            <div className="portrait-card relative overflow-hidden rounded-[1.75rem] border border-white/15 shadow-2xl">
               <img
                 src={ASSETS.fotoVerde}
-                alt="Dr. Márcio França, advogado responsável — OAB/AC 2882"
-                className="h-full w-full object-cover"
-                width={420}
-                height={560}
+                alt="Dr. Márcio Jr. França, advogado responsável — OAB/AC 2882"
+                className="aspect-[3/4] h-full w-full object-cover object-top"
+                width={720}
+                height={960}
+                loading="eager"
+                fetchPriority="high"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 to-transparent p-5">
                 <div className="font-serif text-lg font-semibold text-white">
@@ -101,6 +103,22 @@ export default function Home() {
       </section>
 
       <Authority />
+
+      <section className="brand-rail border-y border-border/70 bg-card" aria-label="Pilares da atuação">
+        <div className="container grid sm:grid-cols-3">
+          {[
+            ["01", "Precedentes", "Fundamentação conectada à jurisprudência relevante."],
+            ["02", "Processo", "Estratégia construída para cada etapa e cenário."],
+            ["03", "Prática forense", "Experiência aplicada às decisões do caso concreto."],
+          ].map(([numero, titulo, texto]) => (
+            <div key={titulo} className="brand-pillar reveal px-1 py-8 sm:px-7 sm:py-10">
+              <span className="text-xs font-semibold tracking-[0.22em] text-primary/55">{numero}</span>
+              <h2 className="mt-3 font-serif text-xl font-semibold text-foreground">{titulo}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{texto}</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* CASOS MAIS PROCURADOS */}
       <section className="bg-background py-24">
@@ -134,10 +152,11 @@ export default function Home() {
             <div className="overflow-hidden rounded-3xl border border-border shadow-xl">
               <img
                 src={ASSETS.fotoRetrato}
-                alt="Dr. Márcio França em seu escritório"
-                className="h-full w-full object-cover"
-                width={560}
-                height={680}
+                alt="Dr. Márcio Jr. França, advogado responsável"
+                className="aspect-square h-full w-full object-cover object-top"
+                width={720}
+                height={720}
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-6 -right-2 hidden w-52 rounded-2xl border border-border bg-card p-5 shadow-lg sm:block lg:-right-6">

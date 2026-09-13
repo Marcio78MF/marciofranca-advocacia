@@ -117,7 +117,7 @@ export const legalServiceSchema = [
     name: FIRM.advogado,
     jobTitle: "Advogado",
     description:
-      "Advogado responsável pelo escritório Márcio França Advocacia, inscrito na OAB/AC sob o nº 2882.",
+      "Advogado responsável pelo escritório Márcio Jr. França Advocacia, inscrito na OAB/AC sob o nº 2882.",
     url: SITE_URL,
     image: `${SITE_URL}${ASSETS.ogImage}`,
     telephone: "+55-68-99951-1555",
@@ -147,7 +147,7 @@ export const legalServiceSchema = [
     url: SITE_URL,
     image: `${SITE_URL}${ASSETS.ogImage}`,
     telephone: "+55-68-99951-1555",
-    founder: { "@type": "Person", name: "Márcio França", jobTitle: "Advogado" },
+    founder: { "@type": "Person", name: "Márcio Jr. França", jobTitle: "Advogado" },
     areaServed: [
       ...CIDADES_ACRE.map(c => ({ "@type": "City" as const, name: c })),
       { "@type": "State" as const, name: "Acre" },
