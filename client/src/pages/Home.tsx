@@ -16,7 +16,8 @@ import { Faq } from "@/components/Faq";
 
 export default function Home() {
   useSeo({
-    title: "Márcio França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
+    title:
+      "Márcio França Advocacia — Atuação estratégica em Rio Branco/AC e em todo o Brasil",
     description:
       "Defesa dos seus direitos perante o INSS, bancos, concessionárias de energia, conflitos familiares e processos criminais. Advocacia estratégica e personalizada em Rio Branco/AC e atuação digital em todo o Brasil. OAB/AC 2882.",
     path: "/",
@@ -43,17 +44,20 @@ export default function Home() {
               {FIRM.posicionamento}
             </span>
             <h1 className="mt-6 font-serif text-3xl font-semibold leading-[1.12] text-balance sm:text-4xl lg:text-[2.8rem]">
-              Você não precisa enfrentar sozinho um benefício negado, descontos bancários indevidos, problemas rurais ou conflitos que exigem proteção jurídica.
+              Você não precisa enfrentar sozinho um benefício negado, descontos
+              bancários indevidos, problemas rurais ou conflitos que exigem
+              proteção jurídica.
             </h1>
             <p className="mt-4 text-base leading-relaxed text-white/75 text-pretty max-w-xl">
-              Atuação estratégica e personalizada nas áreas previdenciária, bancária, rural, familiar e criminal.
+              Atuação estratégica e personalizada nas áreas previdenciária,
+              bancária, rural, familiar e criminal.
             </p>
             <CtaButtons light showDiagnosticoHint className="mt-7" />
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/60">
               <span className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-silver" />
-                +{FIRM.anos} anos de atuação
+                <ShieldCheck className="h-4 w-4 text-silver" />+{FIRM.anos} anos
+                de atuação
               </span>
               <span className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-silver" />
@@ -70,7 +74,10 @@ export default function Home() {
           <div className="relative mx-auto hidden w-full max-w-sm lg:block">
             <div
               className="absolute -inset-4 rounded-[2rem] opacity-40 blur-2xl"
-              style={{ background: "radial-gradient(circle at 60% 30%, rgba(156,168,181,0.55), transparent 70%)" }}
+              style={{
+                background:
+                  "radial-gradient(circle at 60% 30%, rgba(156,168,181,0.55), transparent 70%)",
+              }}
             />
             <div className="relative overflow-hidden rounded-[1.75rem] border border-white/15 shadow-2xl">
               <img
@@ -81,7 +88,9 @@ export default function Home() {
                 height={560}
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 to-transparent p-5">
-                <div className="font-serif text-lg font-semibold text-white">{FIRM.advogado}</div>
+                <div className="font-serif text-lg font-semibold text-white">
+                  {FIRM.advogado}
+                </div>
                 <div className="text-xs uppercase tracking-wider text-white/65">
                   Advogado responsável · {FIRM.oab}
                 </div>
@@ -103,8 +112,8 @@ export default function Home() {
                 Onde podemos ajudar você hoje
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                Selecionamos as demandas mais frequentes. Cada uma tem uma estratégia própria — clique
-                para entender seus direitos.
+                Selecionamos as demandas mais frequentes. Cada uma tem uma
+                estratégia própria — clique para entender seus direitos.
               </p>
             </div>
             <LinkArrow href="/areas">Ver todas as áreas</LinkArrow>
@@ -132,21 +141,27 @@ export default function Home() {
               />
             </div>
             <div className="absolute -bottom-6 -right-2 hidden w-52 rounded-2xl border border-border bg-card p-5 shadow-lg sm:block lg:-right-6">
-              <div className="font-serif text-3xl font-semibold text-primary">+{FIRM.anos}</div>
-              <div className="text-sm text-muted-foreground">anos dedicados à advocacia estratégica</div>
+              <div className="font-serif text-3xl font-semibold text-primary">
+                +{FIRM.anos}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                anos dedicados à advocacia estratégica
+              </div>
             </div>
           </div>
 
           <div className="reveal order-1 lg:order-2">
             <Eyebrow>O escritório</Eyebrow>
             <h2 className="mt-4 font-serif text-3xl font-semibold text-foreground text-balance sm:text-4xl">
-              Advocacia artesanal, técnica e orientada a resultado
+              Advocacia artesanal, técnica e estratégica
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              Sob a responsabilidade do <strong className="text-foreground">{FIRM.advogado}</strong>{" "}
-              ({FIRM.oab}), o escritório combina atuação contenciosa com negociação estratégica e
-              construção de acordos economicamente inteligentes. Cada caso recebe análise individual,
-              fundamentação consistente e argumentação persuasiva.
+              Sob a responsabilidade do{" "}
+              <strong className="text-foreground">{FIRM.advogado}</strong> (
+              {FIRM.oab}), o escritório combina atuação contenciosa com
+              negociação estratégica e construção de acordos economicamente
+              inteligentes. Cada caso recebe análise individual, fundamentação
+              consistente e argumentação persuasiva.
             </p>
             <ul className="mt-7 space-y-3">
               {[
@@ -154,7 +169,7 @@ export default function Home() {
                 "Fundamentação sólida e jurisprudência atualizada (STJ, STF e Tribunais)",
                 "Transparência sobre riscos e caminhos processuais",
                 "Atendimento presencial em Rio Branco/AC e digital em todo o Brasil",
-              ].map((t) => (
+              ].map(t => (
                 <li key={t} className="flex items-start gap-3">
                   <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
                     <ShieldCheck className="h-3.5 w-3.5 text-primary" />
@@ -179,7 +194,12 @@ export default function Home() {
       {/* HUB AGRO teaser */}
       <section className="relative overflow-hidden py-0">
         <div className="relative">
-          <img src={ASSETS.agroBg} alt="" aria-hidden className="h-[420px] w-full object-cover" />
+          <img
+            src={ASSETS.agroBg}
+            alt=""
+            aria-hidden
+            className="h-[420px] w-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#1d2b1f]/92 via-[#1d2b1f]/75 to-transparent" />
           <div className="absolute inset-0 flex items-center">
             <div className="container">
@@ -192,8 +212,9 @@ export default function Home() {
                   Direito do Agro na Amazônia Legal
                 </h2>
                 <p className="mt-4 text-base leading-relaxed text-white/80 text-pretty">
-                  Regularização fundiária, ambiental rural (CAR, Reserva Legal, APP, embargos) e
-                  aposentadoria rural reunidos em um hub especializado para o produtor do Acre.
+                  Regularização fundiária, ambiental rural (CAR, Reserva Legal,
+                  APP, embargos) e aposentadoria rural reunidos em um hub
+                  especializado para o produtor do Acre.
                 </p>
                 <Link
                   href="/agro"
@@ -212,7 +233,6 @@ export default function Home() {
 
       <SeoLocal />
 
-
       {/* DÚVIDAS FREQUENTES */}
       <section className="bg-background py-24">
         <div className="container">
@@ -222,7 +242,8 @@ export default function Home() {
               Perguntas comuns antes de buscar orientação jurídica
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Reunimos as dúvidas mais frequentes de quem procura o escritório pela primeira vez.
+              Reunimos as dúvidas mais frequentes de quem procura o escritório
+              pela primeira vez.
             </p>
             <div className="mt-10">
               <Faq items={HOME_FAQ} />
@@ -236,12 +257,17 @@ export default function Home() {
         <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
         <div className="container relative reveal text-center">
           <h2 className="mx-auto max-w-2xl font-serif text-3xl font-semibold text-balance sm:text-4xl">
-            Seu direito não pode esperar. Fale com quem entende.
+            Solicite uma avaliação individual do seu caso
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base text-white/70 text-pretty">
-            Conte sua situação. A análise inicial é objetiva, confidencial e sem compromisso.
+            Organize as informações iniciais e escolha o canal de atendimento
+            mais adequado.
           </p>
-          <CtaButtons light showDiagnosticoHint className="mt-8 justify-center" />
+          <CtaButtons
+            light
+            showDiagnosticoHint
+            className="mt-8 justify-center"
+          />
         </div>
       </section>
     </Layout>

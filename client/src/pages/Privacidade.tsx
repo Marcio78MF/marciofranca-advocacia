@@ -11,7 +11,7 @@ export default function Privacidade() {
   useSeo({
     title: `Política de Privacidade | ${FIRM.nome}`,
     description:
-      "Como o escritório Márcio França Advocacia trata dados pessoais no site, no diagnóstico jurídico, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
+      "Como o escritório Márcio França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
     path: "/privacidade",
     jsonLd: [
       legalServiceSchema,
@@ -32,9 +32,12 @@ export default function Privacidade() {
             Política de Privacidade
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-white/75 text-pretty">
-            Este texto explica, de forma objetiva, quais dados podem ser tratados quando você
-            navega no site, preenche o diagnóstico jurídico ou entra em contato pelo WhatsApp —
-            e como exercer seus direitos.
+            Este texto explica, de forma objetiva, quais dados podem ser
+            tratados quando você navega no site, preenche a triagem inicial ou
+            entra em contato pelo WhatsApp — e como exercer seus direitos.
+          </p>
+          <p className="mt-4 text-sm text-white/55">
+            Última atualização: 12 de setembro de 2026.
           </p>
         </div>
       </section>
@@ -51,9 +54,11 @@ export default function Privacidade() {
               </h2>
             </div>
             <p className="text-base leading-relaxed text-muted-foreground">
-              O controlador é o escritório <strong className="text-foreground">{FIRM.nome}</strong>,
-              representado por {FIRM.advogado} ({FIRM.oab}), com sede em {FIRM.endereco},{" "}
-              {FIRM.bairro}, {FIRM.cidade}/{FIRM.uf}, CEP {FIRM.cep}. Site:{" "}
+              O controlador é o escritório{" "}
+              <strong className="text-foreground">{FIRM.nome}</strong>,
+              representado por {FIRM.advogado} ({FIRM.oab}), com sede em{" "}
+              {FIRM.endereco}, {FIRM.bairro}, {FIRM.cidade}/{FIRM.uf}, CEP{" "}
+              {FIRM.cep}. Site:{" "}
               <a
                 href={FIRM.site}
                 className="text-primary underline-offset-2 hover:underline"
@@ -75,26 +80,67 @@ export default function Privacidade() {
             </div>
             <ul className="list-disc space-y-3 pl-5 text-base leading-relaxed text-muted-foreground">
               <li>
-                <strong className="text-foreground">Formulário de diagnóstico jurídico:</strong>{" "}
-                nome, WhatsApp e respostas sobre a situação narrada — usados apenas para triagem
-                inicial e para montar o resumo que você envia ao escritório.
+                <strong className="text-foreground">
+                  Questionário de triagem:
+                </strong>{" "}
+                área jurídica, situação selecionada ou breve descrição,
+                disponibilidade de documentos e cidade. As respostas permanecem
+                no navegador e não são transmitidas automaticamente ao
+                escritório. O link abre o WhatsApp com uma mensagem genérica.
               </li>
               <li>
-                <strong className="text-foreground">WhatsApp e telefone:</strong> dados que você
-                informar na conversa (identificação, fatos do caso, documentos enviados) — usados
-                para atendimento, análise jurídica e comunicação sobre o acompanhamento.
+                <strong className="text-foreground">
+                  WhatsApp e telefone:
+                </strong>{" "}
+                dados que você informar na conversa (identificação, fatos do
+                caso, documentos enviados) — usados para atendimento, análise
+                jurídica e comunicação sobre o acompanhamento.
               </li>
               <li>
-                <strong className="text-foreground">Navegação e análise de audiência:</strong>{" "}
-                quando configurado, o site utiliza ferramenta de analytics (Umami) para estatísticas
-                agregadas de visitas (páginas vistas, origem aproximada). Trata-se de medição de
-                audiência, não de publicidade comportamental.
+                <strong className="text-foreground">
+                  Dados sensíveis ou de terceiros:
+                </strong>{" "}
+                dependendo do caso, a conversa pode envolver saúde, deficiência,
+                vida familiar ou informações relacionadas a terceiros. Envie
+                apenas o necessário e, sempre que possível, evite dados de
+                terceiros antes da orientação do escritório.
+              </li>
+              <li>
+                <strong className="text-foreground">
+                  Navegação e análise de audiência:
+                </strong>{" "}
+                quando configurado, o site utiliza ferramenta de analytics
+                (Umami) para estatísticas agregadas de visitas (páginas vistas,
+                origem aproximada). Trata-se de medição de audiência, não de
+                publicidade comportamental.
               </li>
             </ul>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Bases legais típicas: execução de diligências preliminares a pedido do titular
-              (contato/triagem), legítimo interesse na segurança e melhoria do site, e cumprimento
-              de obrigações legais ou regulatórias quando couber.
+              Bases legais típicas: execução de diligências preliminares a
+              pedido do titular (contato/triagem), legítimo interesse na
+              segurança e melhoria do site, e cumprimento de obrigações legais
+              ou regulatórias quando couber.
+            </p>
+          </article>
+
+          <article className="reveal space-y-3">
+            <h2 className="font-serif text-2xl font-semibold text-foreground">
+              Conservação, segurança e transferências
+            </h2>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              Os dados são conservados pelo período necessário à triagem, à
+              execução do serviço, ao cumprimento de deveres legais e
+              regulatórios e ao exercício regular de direitos. Depois disso,
+              podem ser eliminados ou anonimizados, ressalvadas as hipóteses
+              legais de conservação. São adotadas medidas de acesso restrito e
+              proteção compatíveis com a natureza das informações, sem promessa
+              de segurança absoluta.
+            </p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              Provedores como hospedagem, analytics e WhatsApp/Meta podem operar
+              infraestrutura fora do Brasil. Nesses casos, o tratamento e
+              eventual transferência internacional observam a LGPD e as medidas
+              contratuais aplicáveis ao fornecedor.
             </p>
           </article>
 
@@ -108,10 +154,12 @@ export default function Privacidade() {
               </h2>
             </div>
             <p className="text-base leading-relaxed text-muted-foreground">
-              O site não utiliza cookies de marketing ou remarketing. A análise de audiência
-              (Umami), quando ativa, é configurada de modo a priorizar estatísticas agregadas e
-              evitar identificação desnecessária. O navegador pode ainda armazenar dados técnicos
-              próprios (por exemplo, preferência de tema) apenas no seu dispositivo.
+              O site não utiliza cookies de marketing ou remarketing. A análise
+              de audiência (Umami), quando ativa, é configurada de modo a
+              priorizar estatísticas agregadas e evitar identificação
+              desnecessária. O navegador pode ainda armazenar dados técnicos
+              próprios (por exemplo, preferência de tema) apenas no seu
+              dispositivo.
             </p>
           </article>
 
@@ -125,10 +173,11 @@ export default function Privacidade() {
               </h2>
             </div>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Dados de contato e do caso não são vendidos. Podem ser tratados por prestadores
-              estritamente necessários à operação (hospedagem do site, provedor de WhatsApp/Meta,
-              ferramenta de analytics) e, quando a atuação exigir, por correspondentes ou
-              profissionais sob dever de confidencialidade. Autoridades públicas somente mediante
+              Dados de contato e do caso não são vendidos. Podem ser tratados
+              por prestadores estritamente necessários à operação (hospedagem do
+              site, provedor de WhatsApp/Meta, ferramenta de analytics) e,
+              quando a atuação exigir, por correspondentes ou profissionais sob
+              dever de confidencialidade. Autoridades públicas somente mediante
               obrigação legal ou ordem válida.
             </p>
           </article>
@@ -143,11 +192,12 @@ export default function Privacidade() {
               </h2>
             </div>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Você pode solicitar confirmação de tratamento, acesso, correção, anonimização,
-              portabilidade, eliminação de dados desnecessários, informação sobre compartilhamentos
-              e revogação de consentimento, quando aplicável — nos termos dos arts. 18 e seguintes
-              da LGPD. Responderemos pelo canal de contato abaixo, no prazo razoável previsto na
-              legislação.
+              Você pode solicitar confirmação de tratamento, acesso, correção,
+              anonimização, portabilidade, eliminação de dados desnecessários,
+              informação sobre compartilhamentos e revogação de consentimento,
+              quando aplicável — nos termos dos arts. 18 e seguintes da LGPD.
+              Responderemos pelo canal de contato abaixo, no prazo razoável
+              previsto na legislação.
             </p>
           </article>
 
@@ -186,10 +236,11 @@ export default function Privacidade() {
           </article>
 
           <p className="reveal border-t border-border pt-8 text-sm leading-relaxed text-muted-foreground">
-            Conteúdo informativo · {FIRM.advogado} · {FIRM.oab} · não substitui consulta. Em
-            conformidade com o Provimento 205/2021 da OAB e a LGPD (Lei 13.709/2018). Esta página
-            pode ser atualizada para refletir mudanças no site ou na legislação; a versão vigente é
-            a publicada neste endereço.
+            Conteúdo informativo · {FIRM.advogado} · {FIRM.oab} · não substitui
+            consulta. Em conformidade com o Provimento 205/2021 da OAB e a LGPD
+            (Lei 13.709/2018). Esta página pode ser atualizada para refletir
+            mudanças no site ou na legislação; a versão vigente é a publicada
+            neste endereço.
           </p>
         </div>
       </section>

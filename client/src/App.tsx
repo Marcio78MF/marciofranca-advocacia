@@ -1,21 +1,23 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
-import Areas from "./pages/Areas";
-import AreaPage from "./pages/AreaPage";
-import Agro from "./pages/Agro";
-import Diagnostico from "./pages/Diagnostico";
-import Sobre from "./pages/Sobre";
-import Privacidade from "./pages/Privacidade";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
 import { AREAS } from "./lib/site";
 
-const AREA_SLUGS = AREAS.map((a) => a.slug);
+const Home = lazy(() => import("./pages/Home"));
+const Areas = lazy(() => import("./pages/Areas"));
+const AreaPage = lazy(() => import("./pages/AreaPage"));
+const Agro = lazy(() => import("./pages/Agro"));
+const Diagnostico = lazy(() => import("./pages/Diagnostico"));
+const Sobre = lazy(() => import("./pages/Sobre"));
+const Privacidade = lazy(() => import("./pages/Privacidade"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const AREA_SLUGS = AREAS.map(a => a.slug);
 
 function Router() {
   return (
@@ -27,11 +29,17 @@ function Router() {
       <Route path="/sobre" component={Sobre} />
       <Route path="/privacidade" component={Privacidade} />
       <Route path="/blog" component={Blog} />
-      <Route path="/blog/:slug">{(params) => <BlogPost slug={params.slug} />}</Route>
+      <Route path="/blog/:slug">
+        {params => <BlogPost slug={params.slug} />}
+      </Route>
       {/* Landing pages das áreas de atuação */}
       <Route path="/:slug">
-        {(params) =>
-          AREA_SLUGS.includes(params.slug) ? <AreaPage slug={params.slug} /> : <NotFound />
+        {params =>
+          AREA_SLUGS.includes(params.slug) ? (
+            <AreaPage slug={params.slug} />
+          ) : (
+            <NotFound />
+          )
         }
       </Route>
       <Route component={NotFound} />
@@ -45,7 +53,13 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <Suspense
+            fallback={
+              <div className="min-h-screen bg-background" aria-live="polite" />
+            }
+          >
+            <Router />
+          </Suspense>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
