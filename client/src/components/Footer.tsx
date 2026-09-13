@@ -12,8 +12,8 @@ export function Footer() {
         <div className="lg:col-span-1">
           <Logo variant="light" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/60">
-            {FIRM.posicionamento} Atendimento presencial em {FIRM.localizacao} e atuação digital em
-            todo o Brasil.
+            {FIRM.posicionamento} Atendimento presencial em {FIRM.localizacao} e
+            atuação digital em todo o Brasil.
           </p>
           <div className="mt-6 flex gap-3">
             <a
@@ -38,11 +38,16 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-serif text-base font-semibold text-white">Áreas de Atuação</h4>
+          <h4 className="font-serif text-base font-semibold text-white">
+            Áreas de Atuação
+          </h4>
           <ul className="mt-4 space-y-2.5 text-sm">
-            {AREAS.map((a) => (
+            {AREAS.map(a => (
               <li key={a.slug}>
-                <Link href={`/${a.slug}`} className="text-white/65 transition-colors hover:text-white">
+                <Link
+                  href={`/${a.slug}`}
+                  className="text-white/65 transition-colors hover:text-white"
+                >
                   {a.titulo}
                 </Link>
               </li>
@@ -51,29 +56,83 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-serif text-base font-semibold text-white">Navegação</h4>
+          <h4 className="font-serif text-base font-semibold text-white">
+            Navegação
+          </h4>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li><Link href="/agro" className="text-white/65 transition-colors hover:text-white">Hub Agro</Link></li>
-            <li><Link href="/diagnostico" className="text-white/65 transition-colors hover:text-white">Diagnóstico Jurídico</Link></li>
-            <li><Link href="/blog" className="text-white/65 transition-colors hover:text-white">Blog</Link></li>
-            <li><Link href="/sobre" className="text-white/65 transition-colors hover:text-white">Sobre o escritório</Link></li>
-            <li><Link href="/privacidade" className="text-white/65 transition-colors hover:text-white">Privacidade</Link></li>
-            <li><Link href="/areas" className="text-white/65 transition-colors hover:text-white">Todas as áreas</Link></li>
+            <li>
+              <Link
+                href="/agro"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Hub Agro
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/diagnostico"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Triagem inicial
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/sobre"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Sobre o escritório
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacidade"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Privacidade
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/areas"
+                className="text-white/65 transition-colors hover:text-white"
+              >
+                Todas as áreas
+              </Link>
+            </li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-serif text-base font-semibold text-white">Contato</h4>
+          <h4 className="font-serif text-base font-semibold text-white">
+            Contato
+          </h4>
           <ul className="mt-4 space-y-3.5 text-sm">
             <li className="flex items-start gap-3">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-silver" />
-              <a href={`tel:+${FIRM.telefoneRaw}`} className="text-white/65 transition-colors hover:text-white">
+              <a
+                href={`tel:+${FIRM.telefoneRaw}`}
+                className="text-white/65 transition-colors hover:text-white"
+              >
                 {FIRM.telefoneFmt}
               </a>
             </li>
             <li className="flex items-start gap-3">
               <Instagram className="mt-0.5 h-4 w-4 shrink-0 text-silver" />
-              <a href={FIRM.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white/65 transition-colors hover:text-white">
+              <a
+                href={FIRM.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/65 transition-colors hover:text-white"
+              >
                 @{FIRM.instagram}
               </a>
             </li>
@@ -85,7 +144,8 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="text-white/65 transition-colors hover:text-white"
               >
-                {FIRM.endereco} — {FIRM.bairro}, {FIRM.cidade}/{FIRM.uf}, CEP {FIRM.cep}
+                {FIRM.endereco} — {FIRM.bairro}, {FIRM.cidade}/{FIRM.uf}, CEP{" "}
+                {FIRM.cep}
               </a>
             </li>
             <li className="flex items-start gap-3">
@@ -106,11 +166,12 @@ export function Footer() {
       <div className="relative border-t border-white/10">
         <div className="container flex flex-col items-center justify-between gap-3 py-6 text-xs text-white/45 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {FIRM.nome} — {FIRM.oab}. Todos os direitos reservados.
+            © {new Date().getFullYear()} {FIRM.nome} — {FIRM.oab}. Todos os
+            direitos reservados.
           </p>
           <p className="max-w-md text-center sm:text-right">
-            Conteúdo de caráter informativo, em conformidade com o Código de Ética e Disciplina da OAB. Não
-            constitui oferta de serviços nem captação de clientela.
+            Conteúdo informativo. Cada caso depende de análise individual e não
+            há garantia de resultado.
           </p>
         </div>
       </div>

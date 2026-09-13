@@ -19,8 +19,8 @@ export function Logo({
         src={ASSETS.logo}
         alt="Monograma MF — Márcio França Advocacia"
         className="h-9 w-auto shrink-0 select-none"
-        width={36}
-        height={37}
+        width={31}
+        height={36}
         draggable={false}
       />
       {showWordmark && (
@@ -28,7 +28,7 @@ export function Logo({
           <span
             className={cn(
               "font-serif text-[1.05rem] font-semibold tracking-tight",
-              light ? "text-white" : "text-foreground",
+              light ? "text-white" : "text-foreground"
             )}
           >
             Márcio França
@@ -36,7 +36,7 @@ export function Logo({
           <span
             className={cn(
               "text-[0.62rem] font-medium uppercase tracking-[0.24em]",
-              light ? "text-white/55" : "text-muted-foreground",
+              light ? "text-white/55" : "text-muted-foreground"
             )}
           >
             Advocacia

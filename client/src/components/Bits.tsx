@@ -5,16 +5,39 @@ import { ArrowRight, ClipboardList, MessageCircle } from "lucide-react";
 import { whatsapp } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
+export function Eyebrow({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <span className={cn("eyebrow inline-flex items-center gap-2 text-primary", className)}>
+    <span
+      className={cn(
+        "eyebrow inline-flex items-center gap-2 text-primary",
+        className
+      )}
+    >
       <span className="h-px w-6 bg-primary/40" />
       {children}
     </span>
   );
 }
 
-export function CtaButtons({ className, light, wppLabel, wppMsg, showDiagnosticoHint }: { className?: string; light?: boolean; wppLabel?: string; wppMsg?: string; showDiagnosticoHint?: boolean }) {
+export function CtaButtons({
+  className,
+  light,
+  wppLabel,
+  wppMsg,
+  showDiagnosticoHint,
+}: {
+  className?: string;
+  light?: boolean;
+  wppLabel?: string;
+  wppMsg?: string;
+  showDiagnosticoHint?: boolean;
+}) {
   return (
     <div className={cn("flex flex-col gap-3", className)}>
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -33,16 +56,21 @@ export function CtaButtons({ className, light, wppLabel, wppMsg, showDiagnostico
             "btn-press inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors",
             light
               ? "border-white/30 text-white hover:bg-white/10"
-              : "border-border text-foreground hover:bg-accent",
+              : "border-border text-foreground hover:bg-accent"
           )}
         >
           <ClipboardList className="h-4 w-4" />
-          Fazer Diagnóstico Jurídico
+          Iniciar triagem
         </Link>
       </div>
       {showDiagnosticoHint && (
-        <p className={cn("text-xs", light ? "text-white/50" : "text-muted-foreground")}>
-          Descubra em 2 minutos se seu caso exige análise jurídica. Gratuito e sem compromisso.
+        <p
+          className={cn(
+            "text-xs",
+            light ? "text-white/50" : "text-muted-foreground"
+          )}
+        >
+          Organize as informações iniciais do seu caso antes do atendimento.
         </p>
       )}
     </div>
@@ -52,7 +80,7 @@ export function CtaButtons({ className, light, wppLabel, wppMsg, showDiagnostico
 /** Faixa de CTA usada no rodapé das páginas internas. */
 export function CtaBand({
   titulo = "Vamos analisar o seu caso",
-  texto = "Conte sua situação. A análise inicial é objetiva, confidencial e sem compromisso.",
+  texto = "Envie as informações iniciais para uma avaliação individual do seu caso.",
 }: {
   titulo?: string;
   texto?: string;
@@ -62,11 +90,16 @@ export function CtaBand({
       <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div
         className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(156,168,181,0.5), transparent 70%)" }}
+        style={{
+          background:
+            "radial-gradient(circle, rgba(156,168,181,0.5), transparent 70%)",
+        }}
       />
       <div className="container relative reveal">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-serif text-3xl font-semibold text-balance sm:text-4xl">{titulo}</h2>
+          <h2 className="font-serif text-3xl font-semibold text-balance sm:text-4xl">
+            {titulo}
+          </h2>
           <p className="mt-4 text-base text-white/70 text-pretty">{texto}</p>
           <CtaButtons light className="mt-8 justify-center" />
         </div>
@@ -75,7 +108,13 @@ export function CtaBand({
   );
 }
 
-export function LinkArrow({ href, children }: { href: string; children: ReactNode }) {
+export function LinkArrow({
+  href,
+  children,
+}: {
+  href: string;
+  children: ReactNode;
+}) {
   return (
     <Link
       href={href}

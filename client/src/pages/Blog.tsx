@@ -4,11 +4,8 @@ import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import { Eyebrow, CtaBand } from "@/components/Bits";
 import { POSTS, FIRM } from "@/lib/site";
-import { useSeo, breadcrumbSchema } from "@/lib/seo";
-
-function fmtDate(iso: string) {
-  return new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
-}
+import { useSeo, breadcrumbSchema, SITE } from "@/lib/seo";
+import { formatDatePtBr } from "@/lib/date";
 
 export default function Blog() {
   useSeo({
@@ -21,12 +18,12 @@ export default function Blog() {
         "@context": "https://schema.org",
         "@type": "Blog",
         name: `Blog Jurídico — ${FIRM.nome}`,
-        url: "https://marciofranca.adv.br/blog",
-        blogPost: POSTS.map((p) => ({
+        url: `${SITE}/blog`,
+        blogPost: POSTS.map(p => ({
           "@type": "BlogPosting",
           headline: p.titulo,
           datePublished: p.data,
-          url: `https://marciofranca.adv.br/blog/${p.slug}`,
+          url: `${SITE}/blog/${p.slug}`,
         })),
       },
       breadcrumbSchema([
@@ -48,8 +45,9 @@ export default function Blog() {
             Conhecimento jurídico claro e fundamentado
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-white/75 text-pretty">
-            Conteúdo que traduz o Direito para a sua realidade — com a profundidade técnica de quem
-            atua e a clareza de quem quer ser compreendido.
+            Conteúdo que traduz o Direito para a sua realidade — com a
+            profundidade técnica de quem atua e a clareza de quem quer ser
+            compreendido.
           </p>
         </div>
       </section>
@@ -68,10 +66,18 @@ export default function Blog() {
               <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight text-foreground">
                 {destaque.titulo}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{destaque.resumo}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                {destaque.resumo}
+              </p>
               <div className="mt-6 flex items-center gap-5 text-sm text-muted-foreground">
-                <span className="flex items-center gap-1.5"><CalendarDays className="h-4 w-4" />{fmtDate(destaque.data)}</span>
-                <span className="flex items-center gap-1.5"><Clock className="h-4 w-4" />{destaque.leitura}</span>
+                <span className="flex items-center gap-1.5">
+                  <CalendarDays className="h-4 w-4" />
+                  {formatDatePtBr(destaque.data)}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <Clock className="h-4 w-4" />
+                  {destaque.leitura}
+                </span>
               </div>
               <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                 Ler artigo
@@ -81,7 +87,9 @@ export default function Blog() {
             <div className="relative min-h-[240px] bg-navy">
               <div className="grain-overlay absolute inset-0 opacity-[0.06]" />
               <div className="absolute inset-0 flex items-center justify-center p-8">
-                <span className="font-serif text-7xl font-semibold text-white/10">{destaque.categoria}</span>
+                <span className="font-serif text-7xl font-semibold text-white/10">
+                  {destaque.categoria}
+                </span>
               </div>
             </div>
           </Link>
@@ -95,12 +103,24 @@ export default function Blog() {
                 className="lift reveal group flex flex-col rounded-2xl border border-border bg-card p-6 hover:border-primary/30"
                 style={{ transitionDelay: `${(i % 3) * 60}ms` }}
               >
-                <span className="text-xs font-semibold uppercase tracking-wider text-primary">{p.categoria}</span>
-                <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-foreground">{p.titulo}</h3>
-                <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.resumo}</p>
+                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                  {p.categoria}
+                </span>
+                <h3 className="mt-3 font-serif text-xl font-semibold leading-snug text-foreground">
+                  {p.titulo}
+                </h3>
+                <p className="mt-3 line-clamp-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {p.resumo}
+                </p>
                 <div className="mt-5 flex items-center gap-4 text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1.5"><CalendarDays className="h-3.5 w-3.5" />{fmtDate(p.data)}</span>
-                  <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5" />{p.leitura}</span>
+                  <span className="flex items-center gap-1.5">
+                    <CalendarDays className="h-3.5 w-3.5" />
+                    {formatDatePtBr(p.data)}
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="h-3.5 w-3.5" />
+                    {p.leitura}
+                  </span>
                 </div>
               </Link>
             ))}

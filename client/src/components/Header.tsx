@@ -10,7 +10,7 @@ const NAV = [
   { label: "Início", href: "/" },
   { label: "Áreas de Atuação", href: "/areas", areas: true },
   { label: "Hub Agro", href: "/agro" },
-  { label: "Diagnóstico", href: "/diagnostico" },
+  { label: "Triagem", href: "/diagnostico" },
   { label: "Blog", href: "/blog" },
   { label: "Sobre", href: "/sobre" },
 ];
@@ -36,6 +36,17 @@ export function Header() {
     setAreasOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        setAreasOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <header
       className={cn(
@@ -44,7 +55,7 @@ export function Header() {
           ? "bg-background/85 shadow-[0_1px_0_rgba(15,42,67,0.08)] backdrop-blur-xl"
           : onDarkHero
             ? "bg-transparent"
-            : "bg-background/85 backdrop-blur-xl",
+            : "bg-background/85 backdrop-blur-xl"
       )}
     >
       <div className="container flex h-16 items-center justify-between gap-4 lg:h-[72px]">
@@ -54,37 +65,57 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
-          {NAV.map((item) =>
+          {NAV.map(item =>
             item.areas ? (
               <div
                 key={item.href}
                 className="relative"
                 onMouseEnter={() => setAreasOpen(true)}
                 onMouseLeave={() => setAreasOpen(false)}
+                onBlur={event => {
+                  if (!event.currentTarget.contains(event.relatedTarget))
+                    setAreasOpen(false);
+                }}
               >
-                <Link
-                  href={item.href}
+                <button
+                  type="button"
+                  aria-expanded={areasOpen}
+                  aria-controls="menu-areas-desktop"
+                  onClick={() => setAreasOpen(value => !value)}
                   className={cn(
                     "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     onDarkHero
                       ? "text-white/80 hover:text-white"
-                      : "text-foreground/75 hover:text-foreground",
+                      : "text-foreground/75 hover:text-foreground"
                   )}
                 >
                   {item.label}
                   <ChevronDown className="h-3.5 w-3.5 opacity-70" />
-                </Link>
+                </button>
                 {areasOpen && (
-                  <div className="absolute left-1/2 top-full w-[34rem] -translate-x-1/2 pt-2">
+                  <div
+                    id="menu-areas-desktop"
+                    className="absolute left-1/2 top-full w-[34rem] -translate-x-1/2 pt-2"
+                  >
                     <div className="grid grid-cols-2 gap-1 rounded-xl border border-border bg-popover p-2 shadow-xl">
-                      {AREAS.map((a) => (
+                      <Link
+                        href="/areas"
+                        className="col-span-2 rounded-lg bg-accent/60 px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-accent"
+                      >
+                        Ver todas as áreas de atuação
+                      </Link>
+                      {AREAS.map(a => (
                         <Link
                           key={a.slug}
                           href={`/${a.slug}`}
                           className="rounded-lg px-3 py-2.5 transition-colors hover:bg-accent"
                         >
-                          <div className="text-sm font-semibold text-foreground">{a.titulo}</div>
-                          <div className="text-xs text-muted-foreground">{a.curto}</div>
+                          <div className="text-sm font-semibold text-foreground">
+                            {a.titulo}
+                          </div>
+                          <div className="text-xs text-muted-foreground">
+                            {a.curto}
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -99,12 +130,12 @@ export function Header() {
                   "rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   onDarkHero
                     ? "text-white/80 hover:text-white"
-                    : "text-foreground/75 hover:text-foreground",
+                    : "text-foreground/75 hover:text-foreground"
                 )}
               >
                 {item.label}
               </Link>
-            ),
+            )
           )}
         </nav>
 
@@ -124,10 +155,12 @@ export function Header() {
         <button
           className={cn(
             "inline-flex h-10 w-10 items-center justify-center rounded-lg lg:hidden",
-            onDarkHero ? "text-white" : "text-foreground",
+            onDarkHero ? "text-white" : "text-foreground"
           )}
           aria-label={open ? "Fechar menu" : "Abrir menu"}
-          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="menu-principal-mobile"
+          onClick={() => setOpen(v => !v)}
         >
           {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -135,9 +168,12 @@ export function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div
+          id="menu-principal-mobile"
+          className="border-t border-border bg-background lg:hidden"
+        >
           <nav className="container flex flex-col gap-1 py-4">
-            {NAV.filter((n) => !n.areas).map((item) => (
+            {NAV.filter(n => !n.areas).map(item => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -150,7 +186,7 @@ export function Header() {
               Áreas de atuação
             </div>
             <div className="grid grid-cols-2 gap-1">
-              {AREAS.map((a) => (
+              {AREAS.map(a => (
                 <Link
                   key={a.slug}
                   href={`/${a.slug}`}

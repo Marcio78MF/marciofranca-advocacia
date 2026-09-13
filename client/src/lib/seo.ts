@@ -3,15 +3,25 @@ import { FIRM, ASSETS } from "./site";
 
 const SITE_URL = "https://www.marciofranca.adv.br";
 
+export function metaText(value: string, maxLength: number) {
+  if (value.length <= maxLength) return value;
+  const shortened = value.slice(0, maxLength - 1);
+  const wordBoundary = shortened.lastIndexOf(" ");
+  return `${shortened.slice(0, wordBoundary > maxLength * 0.7 ? wordBoundary : maxLength - 1)}…`;
+}
+
 type SeoInput = {
   title: string;
   description: string;
   path?: string;
+  ogType?: "website" | "article";
   jsonLd?: object | object[] | (object | object[])[];
 };
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
+  let el = document.head.querySelector<HTMLMetaElement>(
+    `meta[${attr}="${key}"]`
+  );
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute(attr, key);
@@ -33,21 +43,29 @@ function setLink(rel: string, href: string) {
 const JSONLD_ID = "seo-jsonld";
 
 /** Define title/description/OG/canonical e injeta JSON-LD da página. */
-export function useSeo({ title, description, path = "/", jsonLd }: SeoInput) {
+export function useSeo({
+  title,
+  description,
+  path = "/",
+  ogType = "website",
+  jsonLd,
+}: SeoInput) {
   useEffect(() => {
     const url = `${SITE_URL}${path}`;
-    document.title = title;
-    setMeta("name", "description", description);
-    setMeta("property", "og:title", title);
-    setMeta("property", "og:description", description);
-    setMeta("property", "og:type", "website");
+    const finalTitle = metaText(title, 60);
+    const finalDescription = metaText(description, 155);
+    document.title = finalTitle;
+    setMeta("name", "description", finalDescription);
+    setMeta("property", "og:title", finalTitle);
+    setMeta("property", "og:description", finalDescription);
+    setMeta("property", "og:type", ogType);
     setMeta("property", "og:url", url);
     setMeta("property", "og:image", `${SITE_URL}${ASSETS.ogImage}`);
     setMeta("property", "og:locale", "pt_BR");
     setMeta("property", "og:site_name", FIRM.nome);
     setMeta("name", "twitter:card", "summary_large_image");
-    setMeta("name", "twitter:title", title);
-    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:title", finalTitle);
+    setMeta("name", "twitter:description", finalDescription);
     setMeta("name", "twitter:image", `${SITE_URL}${ASSETS.ogImage}`);
     setLink("canonical", url);
 
@@ -66,16 +84,28 @@ export function useSeo({ title, description, path = "/", jsonLd }: SeoInput) {
     }
 
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [title, description, path, JSON.stringify(jsonLd)]);
+  }, [title, description, path, ogType, JSON.stringify(jsonLd)]);
 }
 
 export const SITE = SITE_URL;
 
 const CIDADES_ACRE = [
-  "Rio Branco", "Cruzeiro do Sul", "Sena Madureira", "Tarauacá", "Feijó",
-  "Brasiléia", "Epitaciolândia", "Xapuri", "Bujari", "Porto Acre",
-  "Acrelândia", "Plácido de Castro", "Assis Brasil", "Mâncio Lima",
-  "Rodrigues Alves", "Capixaba",
+  "Rio Branco",
+  "Cruzeiro do Sul",
+  "Sena Madureira",
+  "Tarauacá",
+  "Feijó",
+  "Brasiléia",
+  "Epitaciolândia",
+  "Xapuri",
+  "Bujari",
+  "Porto Acre",
+  "Acrelândia",
+  "Plácido de Castro",
+  "Assis Brasil",
+  "Mâncio Lima",
+  "Rodrigues Alves",
+  "Capixaba",
 ];
 
 /** Schema base do escritório (Attorney + LegalService + LocalBusiness). */
@@ -86,16 +116,24 @@ export const legalServiceSchema = [
     "@id": `${SITE_URL}/#attorney`,
     name: FIRM.advogado,
     jobTitle: "Advogado",
-    description: "Advogado responsável pelo escritório Márcio França Advocacia, inscrito na OAB/AC sob o nº 2882.",
+    description:
+      "Advogado responsável pelo escritório Márcio França Advocacia, inscrito na OAB/AC sob o nº 2882.",
     url: SITE_URL,
     image: `${SITE_URL}${ASSETS.ogImage}`,
     telephone: "+55-68-99951-1555",
     worksFor: { "@type": "LegalService", "@id": `${SITE_URL}/#legalservice` },
     knowsAbout: [
-      "Direito Previdenciário", "BPC/LOAS", "Aposentadoria Rural",
-      "Direito Bancário", "Empréstimo Consignado", "Direito do Consumidor",
-      "Direito de Família", "Direito Criminal", "Regularização Fundiária",
-      "Direito Ambiental Rural", "Direito do Agronegócio",
+      "Direito Previdenciário",
+      "BPC/LOAS",
+      "Aposentadoria Rural",
+      "Direito Bancário",
+      "Empréstimo Consignado",
+      "Direito do Consumidor",
+      "Direito de Família",
+      "Direito Criminal",
+      "Regularização Fundiária",
+      "Direito Ambiental Rural",
+      "Direito do Agronegócio",
     ],
     sameAs: [FIRM.instagramUrl],
   },
@@ -111,7 +149,7 @@ export const legalServiceSchema = [
     telephone: "+55-68-99951-1555",
     founder: { "@type": "Person", name: "Márcio França", jobTitle: "Advogado" },
     areaServed: [
-      ...CIDADES_ACRE.map((c) => ({ "@type": "City" as const, name: c })),
+      ...CIDADES_ACRE.map(c => ({ "@type": "City" as const, name: c })),
       { "@type": "State" as const, name: "Acre" },
       { "@type": "Country" as const, name: "Brasil" },
     ],
@@ -133,10 +171,17 @@ export const legalServiceSchema = [
       closes: "18:00",
     },
     knowsAbout: [
-      "Direito Previdenciário", "BPC/LOAS", "Aposentadoria Rural",
-      "Direito Bancário", "Empréstimo Consignado", "Direito do Consumidor",
-      "Direito de Família", "Direito Criminal", "Regularização Fundiária",
-      "Direito Ambiental Rural", "Direito do Agronegócio",
+      "Direito Previdenciário",
+      "BPC/LOAS",
+      "Aposentadoria Rural",
+      "Direito Bancário",
+      "Empréstimo Consignado",
+      "Direito do Consumidor",
+      "Direito de Família",
+      "Direito Criminal",
+      "Regularização Fundiária",
+      "Direito Ambiental Rural",
+      "Direito do Agronegócio",
     ],
     sameAs: [FIRM.instagramUrl],
   },
@@ -146,7 +191,7 @@ export function faqSchema(faq: { q: string; a: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faq.map((f) => ({
+    mainEntity: faq.map(f => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: { "@type": "Answer", text: f.a },

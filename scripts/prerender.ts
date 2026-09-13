@@ -17,12 +17,20 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { AREAS, POSTS, FIRM, HOME_FAQ, AGRO_FAQ } from "../client/src/lib/site";
+import {
+  AREAS,
+  POSTS,
+  FIRM,
+  HOME_FAQ,
+  AGRO_FAQ,
+  ASSETS,
+} from "../client/src/lib/site";
 import {
   legalServiceSchema,
   faqSchema,
   breadcrumbSchema,
   SITE,
+  metaText,
 } from "../client/src/lib/seo";
 
 type RouteMeta = {
@@ -30,6 +38,7 @@ type RouteMeta = {
   title: string;
   description: string;
   jsonLd: unknown;
+  ogType?: "website" | "article";
 };
 
 const routes: RouteMeta[] = [
@@ -58,7 +67,7 @@ const routes: RouteMeta[] = [
     path: "/privacidade",
     title: `Política de Privacidade | ${FIRM.nome}`,
     description:
-      "Como o escritório Márcio França Advocacia trata dados pessoais no site, no diagnóstico jurídico, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
+      "Como o escritório Márcio França Advocacia trata dados pessoais no site, na triagem, no WhatsApp e na análise de audiência, em conformidade com a LGPD.",
     jsonLd: [
       legalServiceSchema,
       breadcrumbSchema([
@@ -96,14 +105,14 @@ const routes: RouteMeta[] = [
   },
   {
     path: "/diagnostico",
-    title: `Diagnóstico Jurídico Gratuito | ${FIRM.nome}`,
+    title: `Triagem jurídica inicial | ${FIRM.nome}`,
     description:
-      "Faça uma pré-triagem rápida do seu caso (INSS, banco, Energisa, família, criminal ou agro) e fale diretamente com o escritório pelo WhatsApp. Objetivo, confidencial e sem compromisso.",
+      "Organize informações básicas do seu caso antes de iniciar o contato com o escritório pelo WhatsApp.",
     jsonLd: [
       legalServiceSchema,
       breadcrumbSchema([
         { name: "Início", path: "/" },
-        { name: "Diagnóstico Jurídico", path: "/diagnostico" },
+        { name: "Triagem inicial", path: "/diagnostico" },
       ]),
     ],
   },
@@ -152,6 +161,7 @@ const routes: RouteMeta[] = [
       path: `/blog/${post.slug}`,
       title: `${post.titulo} | Blog ${FIRM.nome}`,
       description: post.resumo,
+      ogType: "article",
       jsonLd: [
         {
           "@context": "https://schema.org",
@@ -159,8 +169,15 @@ const routes: RouteMeta[] = [
           headline: post.titulo,
           description: post.resumo,
           datePublished: post.data,
+          dateModified: post.data,
+          image: `${SITE}${ASSETS.ogImage}`,
+          mainEntityOfPage: `${SITE}/blog/${post.slug}`,
           author: { "@type": "Person", name: FIRM.advogado },
-          publisher: { "@type": "Organization", name: FIRM.nome },
+          publisher: {
+            "@type": "Organization",
+            name: FIRM.nome,
+            logo: { "@type": "ImageObject", url: `${SITE}${ASSETS.ogImage}` },
+          },
           articleSection: post.categoria,
           url: `${SITE}/blog/${post.slug}`,
         },
@@ -184,26 +201,30 @@ function escapeHtml(value: string) {
 
 function renderHead(template: string, route: RouteMeta): string {
   const url = `${SITE}${route.path}`;
-  const title = escapeHtml(route.title);
-  const description = escapeHtml(route.description);
+  const title = escapeHtml(metaText(route.title, 60));
+  const description = escapeHtml(metaText(route.description, 155));
 
   let html = template
-    .replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`)
+    .replace(/<title>[^<]*<\/title>/, () => `<title>${title}</title>`)
     .replace(
       /<meta name="description" content="[^"]*"\s*\/>/,
-      `<meta name="description" content="${description}" />`
+      () => `<meta name="description" content="${description}" />`
     )
     .replace(
       /<meta property="og:title" content="[^"]*"\s*\/>/,
-      `<meta property="og:title" content="${title}" />`
+      () => `<meta property="og:title" content="${title}" />`
     )
     .replace(
       /<meta property="og:description" content="[^"]*"\s*\/>/,
-      `<meta property="og:description" content="${description}" />`
+      () => `<meta property="og:description" content="${description}" />`
+    )
+    .replace(
+      /<meta property="og:type" content="[^"]*"\s*\/>/,
+      () => `<meta property="og:type" content="${route.ogType ?? "website"}" />`
     )
     .replace(
       /<link rel="canonical" href="[^"]*"\s*\/>/,
-      `<link rel="canonical" href="${url}" />`
+      () => `<link rel="canonical" href="${url}" />`
     );
 
   const extraTags = [
@@ -211,7 +232,7 @@ function renderHead(template: string, route: RouteMeta): string {
     `<script type="application/ld+json">${JSON.stringify(route.jsonLd)}</script>`,
   ].join("\n    ");
 
-  return html.replace("</head>", `    ${extraTags}\n  </head>`);
+  return html.replace("</head>", () => `    ${extraTags}\n  </head>`);
 }
 
 function renderNotFound(template: string): string {
