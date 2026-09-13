@@ -3,3 +3,18 @@ html{scroll-behavior:smooth}body{margin:0}.legal{--ink:#061321;--blue:#194c73;--
 @media(max-width:600px){.legal-header{padding:16px 6%}.legal-header nav{font-size:12px;gap:4px 16px}.hero{grid-template-columns:1fr;padding:15px 6% 0}.hero-copy{padding:20px 0 10px}.hero h1{font-size:2.65rem}.hero .lead{font-size:17px}.hero-actions{gap:15px;margin:20px 0}.credentials{margin-top:20px!important}.hero-portrait{max-height:440px;margin-top:15px}.hero-portrait img{height:440px}.proof{flex-wrap:wrap;gap:12px 20px;justify-content:flex-start;padding:22px 6%}.proof span{font-size:12px}.proof b{font-size:16px}.section{padding:55px 6%}.introduction,.process,.about,.contact,.pillar-hero{grid-template-columns:1fr;gap:28px}.area-grid{grid-template-columns:1fr}.area-card{padding:22px}.area-card h3{font-size:1.7rem}.about img{max-height:380px}.contact iframe{min-height:280px;height:280px}.legal footer{grid-template-columns:1fr;padding:35px 6% 100px;gap:20px}.mobile-contact{display:block!important;position:fixed;bottom:0;left:0;right:0;z-index:20;background:#194c73;color:white!important;text-align:center;padding:14px 12px calc(14px + env(safe-area-inset-bottom));box-shadow:0 -3px 14px #0002}.pillar-hero img{max-height:260px;width:100%}.reading{padding:0 6% 40px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.legal *{transition:none!important;animation:none!important;transform:none!important}}
 
+/* Cards editoriais das áreas e identificação visual do WhatsApp */
+.area-grid{grid-template-columns:repeat(2,1fr);gap:22px;border:0}
+.area-card{min-width:0;padding:0;border:1px solid #bac9d3;background:#fff;overflow:hidden;transition:background .2s,transform .2s,box-shadow .2s}
+.area-card:hover{background:#f7fafb;transform:translateY(-4px);box-shadow:0 18px 45px #06132118}
+.area-card>img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:saturate(.82) contrast(1.03)}
+.area-card-copy{padding:25px 26px 28px}
+.whatsapp-link{background:#128c5a!important;color:#fff!important;font-weight:700;border:1px solid #25d366}
+.whatsapp-link:hover{background:#0d7047!important;color:#fff!important}
+
+@media(max-width:600px){
+  .area-grid{grid-template-columns:1fr;gap:16px}
+  .area-card{padding:0}
+  .area-card-copy{padding:21px 22px 23px}
+  .mobile-contact{background:#128c5a;font-weight:700;border-top:2px solid #25d366;box-shadow:0 -3px 14px #0004}
+}
