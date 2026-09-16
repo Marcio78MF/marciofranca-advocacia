@@ -22,7 +22,7 @@
     {"source": "/criminal{/}?", "destination": "/", "permanent": true},
     {"source": "/ambiental-rural{/}?", "destination": "/", "permanent": true},
     {"source": "/blog{/}?", "destination": "/", "permanent": true},
-    {"source": "/blog/:slug*", "destination": "/", "permanent": true},
+    {"source": "/blog/:path(.*)", "destination": "/", "permanent": true},
     {"source": "/favicon.ico", "destination": "/assets/brand/favicon.png", "permanent": true}
   ],
   "headers": [
