@@ -1,4 +1,9 @@
 export const office={name:"Márcio Jr. França Advocacia Jurídica",phone:"(68) 99951-1555",tel:"+5568999511555",whatsapp:"https://wa.me/5568999511555",address:"Av. Epaminondas Jácome, nº 2172, Cerâmica",city:"Rio Branco",state:"AC",zip:"69905-076",email:"marciosantosfranca@gmail.com",lawyer:"Dr. Márcio Jr. França",oab:"OAB/AC 2882"};
+export const social=[
+{name:"Instagram",handle:"@marcio4dv",href:"https://www.instagram.com/marcio4dv"},
+{name:"X",handle:"@franca4dv",href:"https://x.com/franca4dv"},
+{name:"Google",handle:"Perfil e avaliações",href:"https://www.google.com/maps/search/?api=1&query=M%C3%A1rcio+Jr.+Fran%C3%A7a+Advocacia+Jur%C3%ADdica+Rio+Branco+AC"}
+];
 export const canonical="https://www.marciofranca.adv.br";
 export const portraitAlt="Retrato profissional do Dr. Márcio Jr. França, advogado OAB/AC 2882";
 export const pillars=[
